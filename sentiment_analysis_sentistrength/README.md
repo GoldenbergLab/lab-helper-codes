@@ -8,7 +8,7 @@ To run the code use the **Jupyter notebook** file ClassifyCommentSentiment.ipynb
 
 In the same folder you should also have:
 
-1. **SentiStrength.jar** which is the java.
+1. **SentiStrength.jar** which is the java code.
 2. The folder **SentiStrength_Data** which contains the dictionaries. 
 3. **sentiment_rater_new.py** which has the code that communicates with the the java code.
 
