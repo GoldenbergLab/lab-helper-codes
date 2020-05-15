@@ -1,6 +1,6 @@
 # python_twitter_codes
 
-This is a few random twitter codes that are used for a variety of purposes:
+This is a few random helper codes that are used by lab members for a variety of purposes:
 
-1. **getUserInformation:** Used to get any type of user information from a list of users on twitter. 
-2. **sentiment_analysis_sentistrength** - a folder designed to apply sentistrength -- a sentiment analysis tool -- on a text. 
+1. **sentiment_analysis:** Used to get emotion evaluations using different tools
+2. **twitter_apr** - a folder designed to interact with twitter api
