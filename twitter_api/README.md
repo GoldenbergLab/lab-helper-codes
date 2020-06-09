@@ -12,3 +12,5 @@
 5. **json_to_jsonl_binder:** This code takes individual json file containing for example a tweet or user information and creates one large jsonl file.
 
 5. **json_remover:** This code deletes all jsons in a directory, which can be useful if this directory has a large number of files, because cmd cannot remove them anymore.
+
+6. **Location_Classifier:** This code categorieses twitter users into either USA, UK or undefined based on their self described location on their twitter profile.
