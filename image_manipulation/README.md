@@ -7,7 +7,7 @@ You can change the roles for labeling according to your needs size changer: take
 
 **LOOPS AT THE BOTTOM:** They can be used to process a whole batch/directory
 
-**LOOP 1: **changes all names by creating a copy with the new name. It also removes the old version with the old name
+**LOOP 1:** changes all names by creating a copy with the new name. It also removes the old version with the old name
 
 **LOOP 2:** changes the background and the size of all files
 
