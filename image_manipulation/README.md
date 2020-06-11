@@ -1,8 +1,12 @@
 This code has 4 main functions which can be applied to a single image or a whole directory of images name changer: takes a picture and changes the number index of the picture according to the rule, which is right now, if a picture is for e.g. A01 it will add 50 to it to make it A51.
 You can change the roles for labeling according to your needs size changer: takes an image and changes the size proportionally. Right now it creates images of the widht 141pixels background_color_changer: takes a picture and changes the background to grey
+
 **remover:** removes files from directory
+
 **LOOPS AT THE BOTTOM:** They can be used to process a whole batch/directory
+
 **LOOP 1: **changes all names by creating a copy with the new name. It also removes the old version with the old name
+
 **LOOP 2:** changes the background and the size of all files
 
 
