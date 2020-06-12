@@ -37,7 +37,7 @@ uk_l = [x.lower() for x in uk_l] # lower case names
 
 ### List the files in the directory
 
-file_location = os.path.join(current_path,"dataframe", "id_covid_originals.csv") # exact location of basefile
+file_location = os.path.join(current_path,"dataframe", NAMEOFFILE) # exact location of basefile
 
 test_id = pd.read_csv(file_location, #reading in the original dataset
                      error_bad_lines=False,
