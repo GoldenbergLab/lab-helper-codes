@@ -1,19 +1,19 @@
 Guide to sorting through Prolific/ qualtrics etc. faster
 
-**Prolific is chaos
+**Prolific is chaos**
 
-*A guide to approving submissions when you can barely keep track of them (see word doc for images)
+*A guide to approving submissions when you can barely keep track of them (see word doc for images)*
 
-**Contents:
+**Contents:**
 •	General
 •	Walkthrough – the most efficient way to approve prolific submissions
 •	Templates – what to say when. Don’t waste time thinking up a message; just take one of these.
 
-**General Tips
+**General Tips**
 •	Prolific is a great platform but we don’t want to be boycotted by these people! Remember to be as polite and neutral as possible in your dealings with them, even if they are unreasonable. Use the templates below to familiarize yourself with the “polite” tone. 
 •	If they raise an issue with the study, politely ask them to return it. 
 
-**Walkthrough
+**Walkthrough**
 1.	Download qualtrics data and task data and compile a new, cleaned dataset consisting only of the submissions that you want to keep
 2.	Write these ids to a text file, separated by commas. Click on “Approve by upload” and paste these ids into the text box. 
 3.	This will auto-approve all people who have completed the study. 
