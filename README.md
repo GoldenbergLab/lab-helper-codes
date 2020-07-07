@@ -1,6 +1,6 @@
 # lab_helper_codes
 
-This is a few random helper codes that are used by lab members for a variety of purposes:
+Random helper codes to make your life easier:
 
 1. **sentiment_analysis:** Used to get emotion evaluations using different tools
 2. **twitter_apr** - a folder designed to interact with twitter api
