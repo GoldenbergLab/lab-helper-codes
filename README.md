@@ -1,4 +1,4 @@
-# python_twitter_codes
+# lab_helper_codes
 
 This is a few random helper codes that are used by lab members for a variety of purposes:
 
