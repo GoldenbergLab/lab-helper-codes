@@ -1,4 +1,4 @@
-PROCESS for image formatting: 
+**PROCESS for image formatting:** 
 
 1.	Make a backup folder – in case you mess up you don’t want to restore everything from scratch
 2.	Open picture_format.ipynb. There you will see a step by step breakdown
