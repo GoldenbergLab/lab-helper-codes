@@ -6,4 +6,4 @@ Random helper codes to make your life easier:
 2. **twitter_apr** - a folder designed to interact with twitter api
 3. **image_manipulation** - python code that is designed to change images (reduce resolution, change background).
 4. **figureOutProlific** - guide to approving all of the submissions without having a headache
-
+5. **topic modelling** - folder that contains a topic modelling template with instructions on how to run this kind of analysis
