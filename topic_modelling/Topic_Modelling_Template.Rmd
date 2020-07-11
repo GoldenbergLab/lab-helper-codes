@@ -1,0 +1,169 @@
+---
+title: "Topic_Modelling_Template"
+author: "Jonas Schoene"
+date: "11/07/2020"
+output: html_document
+---
+
+This is a short template to do Topic Modelling on Twitter Data. This code is largely based on this tutorial which I highly recommened (https://www.tidytextmining.com/topicmodeling.html).
+
+This template works best for Twitter data that has positive and negative valence scores. The emotional scores then will be used as the based of the structural analysis of the data. The goal is to find the topics that explain a valence deminsion uniquely. Thechnically every other grouping variable can be used instead of valence. In the standart topic modell literature this grouping factor is mostly DOCUMENTS. As one of the task of the topic modelling is to find topics within DOCUMENTS. However, if we have one dataset of tweets there are per see no such different documents. Hence, we create this grouping factor based on what we are interested in.
+
+```{r}
+########### Library
+library(tidyverse)
+library(tidytext)
+library(ggplot2)
+library(topicmodels)
+library(tm)
+library(wordcloud)
+
+options(scipen = 999) # This avoids scientific numbering (e^10 etc.)
+
+########### Getting the text into tidytext format
+
+d <- read.csv("gay_original_article_text_retweets.csv")
+
+head(d) #to have an overview of the relevant variables
+
+d <- d[!duplicated(d), ] #It is important to delete duplicates otherwise the text of this dublicated tweet will weigh heavier on the analysis. We dont want that.
+
+d$tweet_body <- as.character(d$tweet_body) # Bringing the texts in the right format and remove all the extra characters
+d$tweet_body <- gsub("[^[:alnum:] ]", "", d$tweet_body)
+
+d$valence <- d$sen_pos + d$sen_neg # Compute a single valence variable which later will be used for grouping
+
+tidy_d <- d %>% # This creates a dataframe for each word within this grouping factor
+  group_by(valence) %>% 
+  select(tweet_body) %>% 
+  unnest_tokens(word, tweet_body)
+
+#################### Removing Stopwords
+
+data(stop_words) #this is a pre existing set of stopwords
+
+twitter_stopwords <- data.frame("word" = c("rt", "https","http","tco","â","ï", "º","lâ","lovewins","loveislove")) # here you can add your own. This includes for twitter usually all link related information like "http" some residual texts that re-occure, retweet information. ALSO the hashtags that have been used can be removed here, because they will be frequent in all clusters. There is not much unique variance to gain from them. UNLESS if you suspect that there are HASHTAGS that are used by a certain group, or for a certain topic, than keep them!
+
+twitter_stopwords$lexicon <- "gay_marriage" #add your new words to the excisting list
+stop_words_extended <- rbind(stop_words,twitter_stopwords)
+
+tidy_d <- tidy_d %>% #and finally remove them
+  anti_join(stop_words_extended)
+
+################### vizualisation
+
+#tidy_d %>% ### thats a frequency analysis that ONLY WORKS when you dont have a grouping variable, but there is not a strong need to do this part.
+#  count(word, sort = TRUE) %>%
+#  top_n(20, n) %>% 
+#  mutate(word = reorder(word, n)) %>%
+#  ggplot(aes(word, n)) +
+#  geom_col() +
+#  xlab(NULL) +
+#  coord_flip()
+
+################## DTM Format
+
+tidy_d <- tidy_d %>% # This adds a word count to the dataframe
+  group_by(word, valence) %>% 
+  dplyr::summarise(count = n()) %>% 
+  ungroup()
+
+tidy_d$topic <- ifelse(tidy_d$valence > 1, "positive",ifelse(tidy_d$valence < -1, "negative", "neutral")) # THIS is the final grouping variable, which is the equivalent to Documents in the tutorial on the website (https://www.tidytextmining.com/topicmodeling.html).
+
+gay_dtm <- tidy_d %>% # This creates the DOCUMENT TERM MATRIX (Basically Words per Group Matrix) in a format that LDA can work with
+  filter(count > 1000 & is.na(word) == FALSE) %>% #remove rare words and empty rows
+  select(topic, word,count) %>% 
+  cast_dtm(topic, word,count) 
+  
+
+################## Topic Modell
+
+# set a seed so that the output of the model is predictable
+ap_lda <- LDA(gay_dtm, k = 3, control = list(seed = 1234)) #this is the actual topic modelling. The K variable is the number of clusters you decided for!
+ap_lda
+
+############################# Which Topics are in which emotion
+
+# This section helps to decide how many clusters we want to have
+# gamma is basically an estimate of how much variance will be explained by each cluster
+# this can be compared to a factor analysis were the goal is to find clusters that are unique to the grouping factors (in our case emotional valence)
+
+ap_emotions <- tidy(ap_lda, matrix = "gamma") #this calculates the gamma scores for each grouping factor for each cluster
+ap_emotions
+
+tidy(gay_dtm) %>% #this shows words to have a first idea of what words are within a grouping variable
+  filter(document == "negative") %>%
+  arrange(desc(count))
+
+
+ap_emotions %>% #this shows the UNIQUE VARIANCE GRAPH on which you can base your judgment of how many clusters you want
+  mutate(title = reorder(document, gamma * topic)) %>% # reorder titles in order of topic 1, topic 2, etc before plotting
+  ggplot(aes(factor(document), gamma)) +
+  geom_boxplot() +
+  facet_wrap(~ topic)
+
+################## Vizualisation Topics in the Tweets
+
+# This section helps you to make sense on what topic is covered in your clusters
+# you can look on either freqencies or or on the level of uniqueness, which i prefer
+
+ap_topics <- tidy(ap_lda, matrix = "beta") #Beta is the likelyhood of a word being used within a cluster. This is basically frequency.
+ap_topics
+
+ap_top_terms <- ap_topics %>% #This shows you the most frequent words in each cluster
+  group_by(topic) %>%
+  filter(!is.na(term)) %>% 
+  top_n(10, beta) %>%
+  ungroup() %>%
+  arrange(topic, -beta)
+
+ap_top_terms %>% #visualization of the top frequent words within a cluster
+  mutate(term = reorder_within(term, beta, topic)) %>%
+  ggplot(aes(term, beta, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free") +
+  coord_flip() +
+  scale_x_reordered()
+
+beta_spread <- ap_topics %>% #THIS IS THE MOST IMPORTANT PART FOR INTERPRETATION. This computes the words that are not only frequent but also unique for a cluster.
+  mutate(topic = paste0("topic", topic)) %>%
+  spread(topic, beta) %>%
+  filter(topic3 > .0001 | topic2 > .0001) %>% # removes words that are common in both
+  mutate(log_ratio = log2(topic3 / topic2)) #This only compares 2 at the same time so make sure you compare the right clusters
+
+beta_spread
+
+pd <- beta_spread # This prepares the visualisation of two clusters with their most unique words
+pd1 <- pd %>% 
+  top_n(-10, log_ratio)
+pd2 <- pd %>% 
+  top_n(10, log_ratio)
+pd <- rbind(pd1,pd2)
+  
+  
+pd %>%  #MOST IMPORTANT GRAPH to look at for interpreting the clusters
+  ggplot(., aes(x = reorder (term, log_ratio), y = log_ratio)) +
+  geom_bar(stat = "identity") +
+  coord_flip()+ 
+  scale_x_reordered()
+
+################## Word Clouds
+
+# People love word clouds so there you have it
+
+# Word cloud for frequency (in percent)
+wordcloud(words = beta_spread$term, freq = beta_spread$topic1 * 100, min.freq = 1,
+          max.words=200, random.order=FALSE, rot.per=0.35, 
+          colors=brewer.pal(8, "Dark2"))
+
+# Word cloud for uniqueness
+wordcloud(words = pd$term, freq = pd$log_ratio, min.freq = 1,
+          max.words=200, random.order=FALSE, rot.per=0.35, 
+          colors=brewer.pal(8, "Dark2"))
+
+wordcloud(words = pd$term, freq = pd$log_ratio * -1, min.freq = 1,
+          max.words=200, random.order=FALSE, rot.per=0.35, 
+          colors=brewer.pal(8, "Dark2"))
+
+
+```
