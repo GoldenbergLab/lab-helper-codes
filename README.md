@@ -1,9 +1,9 @@
-# lab_helper_codes
+# Lab Coding Guidance
 
-Random helper codes to make your life easier:
+Helpful guides and examples to make life easier.
 
-1. **sentiment_analysis:** Used to get emotion evaluations using different tools
-2. **twitter_apr** - a folder designed to interact with twitter api
-3. **image_manipulation** - python code that is designed to change images (reduce resolution, change background).
-4. **figureOutProlific** - guide to approving all of the submissions without having a headache
-5. **topic modelling** - folder that contains a topic modelling template with instructions on how to run this kind of analysis
+- [Sentiment Analysis](./sentiment_analysis): Tools for retrieving emotion evaluations.
+- [Twitter API](./twitter_apr): Interact with the Twitter API.
+- [Image Manipulation](./image_manipulation): Pythonic helper code to change images (e.g., reduce resolution or change background).
+- [Prolific Guide](./prolific_guide): Guide to avoid headaches with approving Prolific submissions.
+- [Topic Modeling](./topic_modeling): Template for topic  modeling, including instructions.
