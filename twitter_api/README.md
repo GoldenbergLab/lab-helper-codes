@@ -1,5 +1,6 @@
-# python_twitter_codes
+# Twitter API
 
+The following are various programs to interact with the Twitter API via Python.
 
 1. **getUserInformation:** Get user information based on user id
 
