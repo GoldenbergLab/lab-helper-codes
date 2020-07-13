@@ -43,7 +43,8 @@ d <- read.csv("gay_original_article_text_retweets.csv")
 
 head(d) # overview of the relevant variables
 
-# It is important to delete duplicates otherwise the text of this dublicated tweet will weigh heavier on the analysis. We dont want that.
+# It is important to delete duplicates otherwise the text of this duplicated tweet 
+# will weigh heavier on the analysis. We dont want that.
 d <- d[!duplicated(d), ] 
 
 # Bringing the texts in the right format and remove all the extra characters
@@ -68,7 +69,12 @@ Removing Stopwords
 # this is a pre existing set of stopwords
 data(stop_words) 
 
-# here you can add your own. This includes for twitter usually all link related information like "http" some residual texts that re-occure, retweet information. ALSO the hashtags that have been used can be removed here, because they will be frequent in all clusters. There is not much unique variance to gain from them. UNLESS if you suspect that there are HASHTAGS that are used by a certain group, or for a certain topic, than keep them!
+# here you can add your own. This includes for twitter usually all link related 
+# information like "http" some residual texts that re-occure, retweet information. 
+# ALSO the hashtags that have been used can be removed here, because they will be 
+# frequent in all clusters. There is not much unique variance to gain from them. 
+# UNLESS if you suspect that there are HASHTAGS that are used by a certain group, 
+# or for a certain topic, than keep them!
 twitter_stopwords <- data.frame("word" = c("rt", "https","http","tco","â","ï", "º","lâ","lovewins","loveislove")) 
 
 # add your new words to the excisting list
@@ -79,16 +85,18 @@ stop_words_extended <- rbind(stop_words,twitter_stopwords)
 tidy_d <- tidy_d %>% 
   anti_join(stop_words_extended)
 
-################### vizualisation
+# Visualization: below is a frequency analysis that ONLY WORKS when 
+# you dont have a grouping variable, but there is not a strong 
+# need to do this part.
 
-#tidy_d %>% ### thats a frequency analysis that ONLY WORKS when you dont have a grouping variable, but there is not a strong need to do this part.
+#tidy_d %>% 
 #  count(word, sort = TRUE) %>%
 #  top_n(20, n) %>% 
 #  mutate(word = reorder(word, n)) %>%
 #  ggplot(aes(word, n)) +
-#  geom_col() +
-#  xlab(NULL) +
-#  coord_flip()
+#   geom_col() +
+#   xlab(NULL) +
+#   coord_flip()
 ```
 
 DTM Format
@@ -101,14 +109,16 @@ tidy_d <- tidy_d %>%
   dplyr::summarise(count = n()) %>% 
   ungroup()
 
-# THIS is the final grouping variable, which is the equivalent to Documents in the tutorial on the website (https://www.tidytextmining.com/topicmodeling.html).
+# THIS is the final grouping variable, which is the equivalent to 
+# Documents in the tutorial linked above.
 tidy_d$topic <- ifelse(tidy_d$valence > 1, 
                        "positive",
                        ifelse(tidy_d$valence < -1, 
                               "negative", 
                               "neutral")) 
 
-# This creates the DOCUMENT TERM MATRIX (Basically Words per Group Matrix) in a format that LDA can work with
+# This creates the DOCUMENT TERM MATRIX (Basically Words 
+# per Group Matrix) in a format that LDA can work with
 gay_dtm <- tidy_d %>% 
   filter(count > 1000 & (is.na(word) == FALSE)) %>% #remove rare words and empty rows
   select(topic, word,count) %>% 
@@ -119,8 +129,11 @@ Topic Model
 -----------
 
 ``` r
+# this is the actual topic modelling. The K variable is the 
+# number of clusters you decided for. Also, you can
 # set a seed so that the output of the model is predictable
-ap_lda <- LDA(gay_dtm, k = 3, control = list(seed = 1234)) #this is the actual topic modelling. The K variable is the number of clusters you decided for!
+ap_lda <- LDA(gay_dtm, k = 3, control = list(seed = 1234)) 
+
 ap_lda
 ```
 
@@ -129,8 +142,10 @@ Which topics are in which emotion
 
 ``` r
 # This section helps to decide how many clusters we want to have
-# gamma is basically an estimate of how much variance will be explained by each cluster
-# this can be compared to a factor analysis were the goal is to find clusters that are unique to the grouping factors (in our case emotional valence)
+# gamma is basically an estimate of how much variance will be 
+# explained by each cluster this can be compared to a factor analysis 
+# were the goal is to find clusters that are unique to the grouping factors 
+# (in our case emotional valence)
 
 #this calculates the gamma scores for each grouping factor for each cluster
 ap_emotions <- tidy(ap_lda, matrix = "gamma") 
@@ -139,16 +154,19 @@ ap_emotions
 ```
 
 ``` r
-tidy(gay_dtm) %>% #this shows words to have a first idea of what words are within a grouping variable
+# this shows words to have a first idea of what words are within a grouping variable
+tidy(gay_dtm) %>% 
   filter(document == "negative") %>%
   arrange(desc(count))
 
-#this shows the UNIQUE VARIANCE GRAPH on which you can base your judgment of how many clusters you want
+# this shows the UNIQUE VARIANCE GRAPH on which you can base your judgment 
+# of how many clusters you want. Remember to reorder titles in order of 
+# topic 1, topic 2, etc before plotting
 ap_emotions %>% 
-  mutate(title = reorder(document, gamma * topic)) %>% # reorder titles in order of topic 1, topic 2, etc before plotting
+  mutate(title = reorder(document, gamma * topic)) %>% 
   ggplot(aes(factor(document), gamma)) +
-  geom_boxplot() +
-  facet_wrap(~ topic)
+    geom_boxplot() +
+    facet_wrap(~ topic)
 ```
 
 Visualization of Tweet Topics
@@ -182,18 +200,21 @@ ap_top_terms %>%
     coord_flip() +
     scale_x_reordered()
 
-# THIS IS THE MOST IMPORTANT PART FOR INTERPRETATION. This computes the words that are not only frequent but also unique for a cluster.
+# THIS IS THE MOST IMPORTANT PART FOR INTERPRETATION. 
+# This computes the words that are not only frequent but also unique for a cluster.
+# This only compares 2 at the same time so make sure you compare the right clusters
 beta_spread <- ap_topics %>% 
   mutate(topic = paste0("topic", topic)) %>%
   spread(topic, beta) %>%
   filter(topic3 > .0001 | topic2 > .0001) %>% # removes words that are common in both
-  mutate(log_ratio = log2(topic3 / topic2)) #This only compares 2 at the same time so make sure you compare the right clusters
+  mutate(log_ratio = log2(topic3 / topic2)) 
 
 beta_spread
 ```
 
 ``` r
-pd <- beta_spread # This prepares the visualisation of two clusters with their most unique words
+# This prepares the visualisation of two clusters with their most unique words
+pd <- beta_spread 
 
 pd1 <- pd %>% 
   top_n(-10, log_ratio)
