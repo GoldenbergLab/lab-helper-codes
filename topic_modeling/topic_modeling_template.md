@@ -1,32 +1,26 @@
----
-title: "Topic Modeling Template"
-author: "Jonas Schoene"
-date: "11/07/2020"
-output:
-  md_document:
-    variant: markdown_github
----
+Topic Modeling Template
+=======================
 
-# Topic Modeling Template
+This is a short template to do Topic Modeling on Twitter Data. This code
+is largely based on this [tutorial from Tidy Text
+Mining](https://www.tidytextmining.com/topicmodeling.html), which I
+highly recommened.
 
-```{r, setup, include=FALSE}
-knitr::opts_chunk$set(
-  eval = FALSE,
-  warning = FALSE,
-  strip.white = TRUE,
-  tidy = TRUE,
-  highlight = TRUE
-)
-```
+This template works best for Twitter data that has positive and negative
+valence scores. The emotional scores then will be used as the based of
+the structural analysis of the data. The goal is to find the topics that
+explain a valence dimension uniquely. Technically every other grouping
+variable can be used instead of valence. In the standard topic model
+literature this grouping factor is mostly DOCUMENTS. As one of the task
+of the topic modeling is to find topics within DOCUMENTS. However, if we
+have one dataset of tweets there are per see no such different
+documents. Hence, we create this grouping factor based on what we are
+interested in.
 
-This is a short template to do Topic Modeling on Twitter Data. This code is largely based on this [tutorial from Tidy Text Mining](https://www.tidytextmining.com/topicmodeling.html), which I highly recommened.
+Load Packages
+-------------
 
-This template works best for Twitter data that has positive and negative valence scores. The emotional scores then will be used as the based of the structural analysis of the data. The goal is to find the topics that explain a valence dimension uniquely. Technically every other grouping variable can be used instead of valence. In the standard topic model literature this grouping factor is mostly DOCUMENTS. As one of the task of the topic modeling is to find topics within DOCUMENTS. However, if we have one dataset of tweets there are per see no such different documents. Hence, we create this grouping factor based on what we are interested in.
-
-## Load Packages
-
-```{r, load-packages}
-
+``` r
 library(tidyverse)
 library(tidytext)
 library(ggplot2)
@@ -41,10 +35,10 @@ options(scipen = 999)
 options(digits = 2)
 ```
 
-## Tidy Text Formatting
+Tidy Text Formatting
+--------------------
 
-```{r, tidy-text-formatting}
-
+``` r
 d <- read.csv("gay_original_article_text_retweets.csv")
 
 head(d) # overview of the relevant variables
@@ -67,10 +61,10 @@ tidy_d <- d %>%
   unnest_tokens(word, tweet_body)
 ```
 
-## Removing Stopwords
+Removing Stopwords
+------------------
 
-```{r, remove-stopwords}
-
+``` r
 # this is a pre existing set of stopwords
 data(stop_words) 
 
@@ -95,13 +89,12 @@ tidy_d <- tidy_d %>%
 #  geom_col() +
 #  xlab(NULL) +
 #  coord_flip()
-
 ```
 
-## DTM Format
+DTM Format
+----------
 
-```{r, dtm-format}
-
+``` r
 # This adds a word count to the dataframe
 tidy_d <- tidy_d %>% 
   group_by(word, valence) %>% 
@@ -120,24 +113,21 @@ gay_dtm <- tidy_d %>%
   filter(count > 1000 & (is.na(word) == FALSE)) %>% #remove rare words and empty rows
   select(topic, word,count) %>% 
   cast_dtm(topic, word,count) 
-  
-
 ```
 
-## Topic Model
+Topic Model
+-----------
 
-```{r, topic-model}
-
+``` r
 # set a seed so that the output of the model is predictable
 ap_lda <- LDA(gay_dtm, k = 3, control = list(seed = 1234)) #this is the actual topic modelling. The K variable is the number of clusters you decided for!
 ap_lda
-
 ```
 
-## Which topics are in which emotion
+Which topics are in which emotion
+---------------------------------
 
-```{r, topic-model-emotion}
-
+``` r
 # This section helps to decide how many clusters we want to have
 # gamma is basically an estimate of how much variance will be explained by each cluster
 # this can be compared to a factor analysis were the goal is to find clusters that are unique to the grouping factors (in our case emotional valence)
@@ -146,11 +136,9 @@ ap_lda
 ap_emotions <- tidy(ap_lda, matrix = "gamma") 
 
 ap_emotions
-
 ```
 
-```{r, filter-by-negative}
-
+``` r
 tidy(gay_dtm) %>% #this shows words to have a first idea of what words are within a grouping variable
   filter(document == "negative") %>%
   arrange(desc(count))
@@ -161,13 +149,12 @@ ap_emotions %>%
   ggplot(aes(factor(document), gamma)) +
   geom_boxplot() +
   facet_wrap(~ topic)
-
 ```
 
-## Visualization of Tweet Topics
+Visualization of Tweet Topics
+-----------------------------
 
-```{r, visualize-topics-in-tweets}
-
+``` r
 # This section helps you to make sense on what topic is covered in your clusters
 # you can look on either freqencies or or on the level of uniqueness, which i prefer
 
@@ -175,11 +162,9 @@ ap_emotions %>%
 ap_topics <- tidy(ap_lda, matrix = "beta") 
 
 ap_topics
-
 ```
 
-```{r, top-terms}
-
+``` r
 # This shows you the most frequent words in each cluster
 ap_top_terms <- ap_topics %>% 
   group_by(topic) %>%
@@ -205,10 +190,9 @@ beta_spread <- ap_topics %>%
   mutate(log_ratio = log2(topic3 / topic2)) #This only compares 2 at the same time so make sure you compare the right clusters
 
 beta_spread
-
 ```
 
-```{r, most-unique-words-in-clusters}
+``` r
 pd <- beta_spread # This prepares the visualisation of two clusters with their most unique words
 
 pd1 <- pd %>% 
@@ -225,15 +209,14 @@ pd %>%
     geom_bar(stat = "identity") +
     coord_flip() + 
     scale_x_reordered()
-
 ```
 
-## Word Clouds
+Word Clouds
+-----------
 
 People love word clouds so there you have it.
 
-```{r, word-clouds}
-
+``` r
 # Word cloud for frequency (in percent)
 wordcloud(words = beta_spread$term, freq = beta_spread$topic1 * 100, min.freq = 1,
           max.words=200, random.order=FALSE, rot.per=0.35, 
@@ -247,5 +230,4 @@ wordcloud(words = pd$term, freq = pd$log_ratio, min.freq = 1,
 wordcloud(words = pd$term, freq = pd$log_ratio * -1, min.freq = 1,
           max.words=200, random.order=FALSE, rot.per=0.35, 
           colors=brewer.pal(8, "Dark2"))
-
 ```
