@@ -5,7 +5,6 @@ from io import StringIO
 from tqdm import tqdm
 import time
 
-
 #############################################################################################################################
 ##################                                                                                         ##################
 ##################                    Reading in Textfile containing text and ids                          ##################
@@ -13,7 +12,6 @@ import time
 #############################################################################################################################
 
 continuing_file_path_1_2 = 'D:\\DownloadsDesktop\\Desktop\\Oxford\\FYP\\fyp_collective_emotion\\Data\\wall_sentiment.csv' #This line has to be adjusted to the file that you want to analyse
-
 
 d_full = pd.read_csv(continuing_file_path_1_2, #loading that dataset
                          error_bad_lines=False,
@@ -32,7 +30,6 @@ d_full = d_full.loc[d_full['lenght_list'] < 250]
 d_full = d_full.iloc[:]
 d_full = d_full.reset_index(drop=True)
 
-
 analyzer = SentimentIntensityAnalyzer()
 #for sentence in sentences:
 #    vs = analyzer.polarity_scores(sentence)
@@ -40,7 +37,6 @@ analyzer = SentimentIntensityAnalyzer()
 
 df = pd.DataFrame(columns=['sen_neg', 'sen_neu', 'sen_pos','compound', 'text'])
 print(df)
-
 
 start = time.time() # just as reference
 for index, row in d_full.iterrows():

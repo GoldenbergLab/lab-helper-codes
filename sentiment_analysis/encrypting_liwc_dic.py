@@ -3,6 +3,7 @@ import base64
 import zipfile
 import re
 import sys
+
 """
 Example command:
 python script.py "./original/LIWC2015_English.dic" "./e2015.dic" "/home/user/.wine/drive_c/Program Files (x86)/LIWC2015/app/lib/LIWC2015-app-1.5.0.jar"
