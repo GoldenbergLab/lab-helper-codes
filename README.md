@@ -4,6 +4,7 @@ Helpful guides and examples to make life easier.
 
 ## Guides
 
+- [Amazon Web Services](./guides/aws): Guide to install, configure, and use AWS.
 - [Prolific](./guides/prolific): Guide to avoid headaches with approving Prolific submissions.
 
 ## Examples
