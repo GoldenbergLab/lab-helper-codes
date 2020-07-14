@@ -73,7 +73,7 @@ the command. The _location_ can be one of these [regions under the 'Code' column
 ### General Usage
 
 **Important**: In order to use AWS Lambda with package dependencies, such as
-the `tweet` package in Python, the command line interface `aws` must be installed on your
+the `tweepy` package in Python, the command line interface `aws` must be installed on your
 local machine. This is non-negotiable both for security purposes and for
 package deployment. If you have not configured your CLI, please scroll back up
 and do so before continuing on this section.
