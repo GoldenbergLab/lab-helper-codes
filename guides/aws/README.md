@@ -45,7 +45,7 @@ open ~/.aws/credentials
 - [What is AWS Lambda?](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)
 - [Getting Started](https://docs.aws.amazon.com/lambda/latest/dg/getting-started.html)
 
-### Usage
+### General Usage
 
 **Important**: In order to use AWS Lambda with package dependencies, such as
 the `tweet` package in Python, the command line interface `aws` must be installed on your
@@ -55,3 +55,6 @@ and do so before continuing on this section.
 
 - [Using AWS Lambda with the AWS CLI](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-awscli.html)
 
+### Python
+
+- [Building Lambda functions with Python](https://docs.aws.amazon.com/lambda/latest/dg/lambda-python.html)
