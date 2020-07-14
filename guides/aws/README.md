@@ -3,11 +3,6 @@
 The following is a brief series of steps that should help get people up and
 running with AWS. 
 
-**Important**: In order to use AWS Lambda with package dependencies, such as
-the `tweet` package in Python, the command line interface `aws` must be installed on your
-local machine. This is non-negotiable both for security purposes and for
-package deployment.
-
 ## Command Line Interface (CLI)
 
 ### Installation
@@ -42,3 +37,21 @@ open ~/.aws/config
 ```
 open ~/.aws/credentials
 ```
+
+## AWS Lambda
+
+### Introduction
+
+- [What is AWS Lambda?](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)
+- [Getting Started](https://docs.aws.amazon.com/lambda/latest/dg/getting-started.html)
+
+### Usage
+
+**Important**: In order to use AWS Lambda with package dependencies, such as
+the `tweet` package in Python, the command line interface `aws` must be installed on your
+local machine. This is non-negotiable both for security purposes and for
+package deployment. If you have not configured your CLI, please scroll back up
+and do so before continuing on this section.
+
+- [Using AWS Lambda with the AWS CLI](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-awscli.html)
+
