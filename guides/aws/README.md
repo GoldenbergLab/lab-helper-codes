@@ -47,6 +47,22 @@ open ~/.aws/config
 open ~/.aws/credentials
 ```
 
+## Amazon S3
+
+- [Using high-level (s3) commands with the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-s3-commands.html)
+
+Creating your first bucket from the command line, assuming proper permissions,
+should be straightforward with `aws s3api`:
+
+```
+aws s3api create-bucket --bucket mytest-bucket
+```
+
+where _mytest-bucket_ is the name of the bucket you'd like to create. This is
+made at the default location of your AWS profile configuration. If you'd like
+to specify a location, include `LocationConstraint=location` as an option on
+the command. The _location_ can be one of these [regions under the 'Code' column](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+
 ## AWS Lambda
 
 ### Introduction
@@ -63,6 +79,7 @@ package deployment. If you have not configured your CLI, please scroll back up
 and do so before continuing on this section.
 
 - [Using AWS Lambda with the AWS CLI](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-awscli.html)
+- [Using AWS Lambda with with Amazon S3](https://docs.aws.amazon.com/lambda/latest/dg/with-s3-example.html)
 
 ### Python
 
