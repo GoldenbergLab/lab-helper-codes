@@ -49,7 +49,15 @@ open ~/.aws/credentials
 
 ## Amazon S3
 
+### Introduction
+
+- [What is Amazon S3?](https://docs.aws.amazon.com/AmazonS3/latest/dev/Welcome.html)
+- [Getting Started](https://docs.aws.amazon.com/AmazonS3/latest/gsg/GetStartedWithS3.html)
+
+### General Usage with AWS CLI
+
 - [Using high-level (s3) commands with the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-s3-commands.html)
+- [Using API-Level (s3api) commands with the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-s3-apicommands.html)
 
 Creating your first bucket from the command line, assuming proper permissions,
 should be straightforward with `aws s3api`:
@@ -61,7 +69,14 @@ aws s3api create-bucket --bucket mytest-bucket
 where _mytest-bucket_ is the name of the bucket you'd like to create. This is
 made at the default location of your AWS profile configuration. If you'd like
 to specify a location, include `LocationConstraint=location` as an option on
-the command. The _location_ can be one of these [regions under the 'Code' column](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints).
+the command. The _location_ can be one of these 
+[regions under the 'Code' column](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). A succesful response of this command to create buckets will look like
+
+```
+{
+    "Location": "/mytest-bucket"
+}
+```
 
 ## AWS Lambda
 
@@ -70,7 +85,7 @@ the command. The _location_ can be one of these [regions under the 'Code' column
 - [What is AWS Lambda?](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)
 - [Getting Started](https://docs.aws.amazon.com/lambda/latest/dg/getting-started.html)
 
-### General Usage
+### General Usage with AWS CLI
 
 **Important**: In order to use AWS Lambda with package dependencies, such as
 the `tweepy` package in Python, the command line interface `aws` must be installed on your
