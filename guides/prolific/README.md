@@ -1,4 +1,4 @@
-# Prolific Guide
+# Prolific
 
 Handle issues with Prolific approvals and Qualtrics surveys faster.
 
