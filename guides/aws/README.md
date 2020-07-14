@@ -3,6 +3,15 @@
 The following is a brief series of steps that should help get people up and
 running with AWS. 
 
+## Administration
+
+As useful as AWS is, the developer community considers it a necessary evil.
+Rightfully so, as using it can be painstaking and full of errors before the 
+first sign of success. Major aspects of using AWS rely on setup and
+configuration: creating a root account, IAM users and groups, security
+credentials, and so on. Once these are set, and with well-defined naming
+conventions, the administrative evil can be somewhat bypassed with future use.
+
 ## Command Line Interface (CLI)
 
 ### Installation
