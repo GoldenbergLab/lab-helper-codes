@@ -78,6 +78,19 @@ the command. The _location_ can be one of these
 }
 ```
 
+### Upload Local Files to S3
+
+To upload a local file, such as a ZIP file that is too large to directly send
+to AWS Lambda (>50 MB), run
+
+```
+aws s3 cp mytest-function.zip s3://mytest-bucket
+```
+
+where *mytest-function.zip* is the compressed file and *mytest-bucket* is an
+already existing S3 bucket. Before running this, you might include the option
+`--dryrun` to be sure it works as intended.
+
 ## AWS Lambda
 
 ### Introduction
@@ -99,3 +112,4 @@ and do so before continuing on this section.
 ### Python
 
 - [Building Lambda functions with Python](https://docs.aws.amazon.com/lambda/latest/dg/lambda-python.html)
+
