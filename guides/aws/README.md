@@ -12,6 +12,23 @@ configuration: creating a root account, IAM users and groups, security
 credentials, and so on. Once these are set, and with well-defined naming
 conventions, the administrative evil can be somewhat bypassed with future use.
 
+### IAM Users & Groups
+
+Use IAM Users & Groups to provision permissions and policies. Otherwise, root
+access could come in harm's way.
+
+### Roles
+
+Aside from IAM, roles are going to be necessary to attach to services such as
+AWS Lambda. In particular, these roles will also have attached policies, which
+will allow them to interact with various parts of the AWS ecosystem.
+
+In order for AWS Lambda to use encrypted environment variables with AWS Key
+Management Service (KMS), Lambda functions will require roles with policies
+that are VPC-enabled. For instance, `AWSLambdaVPCAccessExecutionRole` is one
+such policy. Otherwise, any function call with decryption will timeout and
+throw an error.
+
 ## Command Line Interface (CLI)
 
 ### Installation
