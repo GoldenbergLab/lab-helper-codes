@@ -130,3 +130,9 @@ and do so before continuing on this section.
 
 - [Building Lambda functions with Python](https://docs.aws.amazon.com/lambda/latest/dg/lambda-python.html)
 
+### Building Dependencies
+
+Nothing comes easy with AWS, and using Python packages is no exception to this
+rule. To install `pandas` and `numpy`, an AWS Linux compatible version of each
+must be compiled. A great tutorial on doing so with Docker is [found here](https://blog.alloy.co/deploying-aws-lambda-layers-with-pandas-for-data-science-38fe37a44a81)
+and references these useful [public Docker images](https://github.com/lambci/docker-lambda).
