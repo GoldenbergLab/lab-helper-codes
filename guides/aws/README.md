@@ -2,7 +2,6 @@
 
 The following is a brief series of steps that should help get people up and
 running with AWS. 
-
 ## Administration
 
 As useful as AWS is, the developer community considers it a necessary evil.
@@ -136,3 +135,43 @@ Nothing comes easy with AWS, and using Python packages is no exception to this
 rule. To install `pandas` and `numpy`, an AWS Linux compatible version of each
 must be compiled. A great tutorial on doing so with Docker is [found here](https://blog.alloy.co/deploying-aws-lambda-layers-with-pandas-for-data-science-38fe37a44a81)
 and references these useful [public Docker images](https://github.com/lambci/docker-lambda).
+
+## Serverless Application Model (SAM)
+
+The SAM CLI is a very convenient method of creating, organizing, building and
+deploying Lambda functions. Start by [installing](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html) it.
+
+To initialize a new Lambda function, go to the directory you'd like to create
+it in and run
+
+```
+sam init -r python3.8 -d pip
+```
+
+where the runtime is specified as Python 3.8 by `-r python3.8` and dependency manager as pip `-d pip`.
+
+This initialization will prompt with some interactive questions, including
+whether you'd like to use a quick start template from AWS or a custom template
+at a specified location (i.e., in a GitHub repository).
+
+While a name for the application is requested in the set of prompts, you can
+preemptively name it by extending the above initialization command with `-n
+<app-name>`.
+
+### Custom Templates
+
+While it's certainly useful to look at the AWS-provided examples as a starting
+point, we'll need a dedicated template for our specific needs that will serve
+as a foundation for our projects using AWS Lambda, especially those needing
+access to layers.
+
+You can find a basic custom template that is configured to expedite our
+workflow with Python 3.8 at `https://github.com/aridyckovsky/sam-template-python3.8`.
+Ari has made this public and fully available for any SAM-related project, and
+you can initialize a new serverless application model based on this template by running
+
+```
+sam init -l gh:aridyckovsky/sam-template-python3.8
+```
+
+
