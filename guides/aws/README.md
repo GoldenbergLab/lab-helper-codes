@@ -107,7 +107,7 @@ aws s3 cp <file-name-with-extension> s3://mytest-bucket
 
 The command starts with making sure the `aws` tool is being used, specifies
 that the service is `s3`, and uses `cp` to **c**opy the **p**ath, in this case a file,
-to the S3 bucket "mytest-bucket". If such as a file that is too large to directly upload
+to the S3 bucket "mytest-bucket". If such a file is too large to directly upload
 to AWS, first compress the file with
 
 ```
