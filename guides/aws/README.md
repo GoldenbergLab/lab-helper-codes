@@ -2,6 +2,7 @@
 
 The following is a brief series of steps that should help get people up and
 running with AWS. 
+
 ## Administration
 
 As useful as AWS is, the developer community considers it a necessary evil.
@@ -82,7 +83,9 @@ should be straightforward with `aws s3api`:
 aws s3api create-bucket --bucket mytest-bucket
 ```
 
-where _mytest-bucket_ is the name of the bucket you'd like to create. This is
+where _mytest-bucket_ is the name of the bucket you'd like to create; the
+bucket name must be unique across the AWS ecosystem, so if you are returned
+an error about the bucket name, make it unique. The bucket is
 made at the default location of your AWS profile configuration. If you'd like
 to specify a location, include `LocationConstraint=location` as an option on
 the command. The _location_ can be one of these 
@@ -96,16 +99,29 @@ the command. The _location_ can be one of these
 
 ### Upload Local Files to S3
 
-To upload a local file, such as a ZIP file that is too large to directly send
-to AWS Lambda (>50 MB), run
+To upload a local file, run 
 
 ```
-aws s3 cp mytest-function.zip s3://mytest-bucket
+aws s3 cp <file-name-with-extension> s3://mytest-bucket
 ```
 
-where *mytest-function.zip* is the compressed file and *mytest-bucket* is an
-already existing S3 bucket. Before running this, you might include the option
-`--dryrun` to be sure it works as intended.
+The command starts with making sure the `aws` tool is being used, specifies
+that the service is `s3`, and uses `cp` to **c**opy the **p**ath, in this case a file,
+to the S3 bucket "mytest-bucket". If such as a file that is too large to directly upload
+to AWS, first compress the file with
+
+```
+zip -r9 <file-name>.zip <file-name-with-extension>
+```
+
+and then run
+
+```
+aws s3 cp <file-name>.zip s3://mytest-bucket
+```
+
+where `<file-name>.zip` is the compressed file. Before running this, 
+you might include the option `--dryrun` to be sure it works as intended.
 
 ## AWS Lambda
 
