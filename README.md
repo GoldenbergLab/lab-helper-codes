@@ -4,6 +4,8 @@ Helpful guides and examples to make life easier.
 
 ## Guides
 
+- [Fundamentals](./guides/fundamentals): Guide to fundamentals of writing,
+  maintaining, and collaborating on code.
 - [Amazon Web Services](./guides/aws): Guide to install, configure, and use AWS.
 - [Prolific](./guides/prolific): Guide to avoid headaches with approving Prolific submissions.
 

@@ -1,7 +1,31 @@
 # Amazon Web Services (AWS)
 
 The following is a brief series of steps that should help get people up and
-running with AWS. 
+running with AWS.
+
+<!-- toc -->
+
+- [Administration](#administration)
+  * [IAM Users & Groups](#iam-users--groups)
+  * [Roles](#roles)
+- [Command Line Interface (CLI)](#command-line-interface-cli)
+  * [Installation](#installation)
+  * [Configuration](#configuration)
+    + [Check configuration](#check-configuration)
+    + [Check credentials](#check-credentials)
+- [Amazon S3](#amazon-s3)
+  * [Introduction](#introduction)
+  * [General Usage with AWS CLI](#general-usage-with-aws-cli)
+  * [Upload Local Files to S3](#upload-local-files-to-s3)
+- [AWS Lambda](#aws-lambda)
+  * [Introduction](#introduction-1)
+  * [General Usage with AWS CLI](#general-usage-with-aws-cli-1)
+  * [Python](#python)
+  * [Building Dependencies](#building-dependencies)
+- [Serverless Application Model (SAM)](#serverless-application-model-sam)
+  * [Custom Templates](#custom-templates)
+
+<!-- tocstop -->
 
 ## Administration
 
