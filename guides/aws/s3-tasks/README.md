@@ -19,7 +19,7 @@ Make sure AWS is configured, which means your IAM user account is valid and work
 6. (Optional, but recommended) Add two tags to easily designate what phase of development a bucket is, and what kind of task it is (i.e., survey):
     1. {Key: **environment**, Value: *phase*}
     2. {Key: **task-type**, Value: *type*}
-7. Click Create bucket and you will be brought back to the main S3 console.
+7. Click **Create bucket** and you will be brought back to the main S3 console.
 
 ## Update bucket to host task
 
