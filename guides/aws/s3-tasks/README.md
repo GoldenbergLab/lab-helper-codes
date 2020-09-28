@@ -20,6 +20,26 @@ Make sure AWS is configured, which means your IAM user account is valid and work
     1. {Key: **environment**, Value: *phase*}
     2. {Key: **task-type**, Value: *type*}
 7. Click **Create bucket** and you will be brought back to the main S3 console.
+8. Your bucket is ready to be populated with the task and related requirements (i.e., stimuli).
+
+## Uploading your task to S3
+
+1. On your computer, gather the task materials you will upload to S3. For example, you may have a structure of files that looks like this:
+
+```bash
+.
+├── external-html/
+│   └── consent.html
+├── index.html
+├── jspsych/
+└── stimuli/
+    ├── 1.jpg
+    ├── 2.jpg
+    └── 3.jpg
+```
+
+2. Click the **Upload** button, and you should be able to select all the above files from (1) and drag-and-drop into the modal window.
+3. Confirm that the files are correct and click **Upload**.
 
 ## Update bucket to host task
 
@@ -49,9 +69,7 @@ Make sure AWS is configured, which means your IAM user account is valid and work
     }
     ```
 6. Click **Save** and follow the prompt to confirm that this should be public.
-7. Your bucket is ready to be populated with the task and related requirements (i.e., stimuli).
-
-## Uploading your task to S3
+7. Your bucket is ready to configure with CloudFront.
 
 ## Syncing your task to its `task-data-raw` folder
 
