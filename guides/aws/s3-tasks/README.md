@@ -151,7 +151,8 @@ function saveDataToS3(id, csv) {
   });
 
 
-} ```
+}
+```
 
 You will then reference this saving function within `on_finish` tags within
 your jsPsych timeline when you would like to write data to S3. Remember to pass
