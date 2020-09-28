@@ -55,5 +55,66 @@ Make sure AWS is configured, which means your IAM user account is valid and work
 
 ## Syncing your task to its `task-data-raw` folder
 
+Our S3 service has a variety of buckets, but the bucket we save data to will be the same bucket for all tasks. It's named `task-data-raw`. The only change will be which _folder_ of the bucket, where that folder will have the same name as the bucket of the task. So if the task is called `fun-new-task-with-a-twist-production`, we save data to a folder located within-bucket: `task-data-raw/fun-new-task-with-a-twist-production`.
+
+To save data from a task, whether it is in staging, pilot, or production, you must use the [AWS Browser SDK](https://aws.amazon.com/sdk-for-browser/). In particular, we need this SDK to link to both Cognito and S3 from the task. There are two ways to use the SDK. The most common way this lab will import the script is through a direct script link in the main HTML file:
+
+```
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.713.0.min.js"></script>
+```
+
+The following JavaScript code block can be configured within another script for any browser-based task:
+
+```
+/*
+ * You must use this cognitoIdentityPool string value and the "task-data-raw" value
+ * for the DIRECTORY. The BUCKET valuee will change based on the task.
+ */
+
+const cognitoIdentityPool = "us-east-1:0f699842-4091-432f-8b93-a2d4b7bb5f20";
+const DIRECTORY = "task-data-raw";
+const BUCKET = your-awesome-task-bucket;
+
+/*
+ * Save data at any point to S3 using this function.
+ * It takes as arguments the string identifier of a participant
+ * and the data in CSV form from the jsPsych data getter.
+ */
+function saveDataToS3(id, csv) {
+
+  AWS.config.update({
+    region: "us-east-1",
+    credentials: new AWS.CognitoIdentityCredentials({
+      IdentityPoolId: cognitoIdentityPool
+    }),
+  })
+
+  const filename = `${DIRECTORY}/${id}.csv`;
+
+  const bucket = new AWS.S3({
+    params: {
+      Bucket: BUCKET
+    },
+    apiVersion: "2006-03-01",
+  })
+
+  const objParams = {
+    Key: filename,
+    Body: csv
+  }
+
+  bucket.putObject(objParams, (err, data) => {
+    if (err) {
+      console.log("Error: ", err.message);
+    } else {
+      console.log("Data: ", data);
+    }
+  });
+
+}
+```
+
+You will then reference this saving function within `on_finish` tags within your jsPsych timeline when you would like to write data to S3. Remember to pass in a participant identifier and the data to be saved in CSV format.
+
 ## Configuring a CloudFront deployment
 
