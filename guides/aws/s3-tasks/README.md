@@ -50,8 +50,17 @@ development a bucket is, and what kind of task it is (i.e., survey):
 1. On your computer, gather the task materials you will upload to S3. For
 example, you may have a structure of files that looks like this:
 
-```bash .  ├── external-html/ │   └── consent.html ├── index.html ├── jspsych/
-└── stimuli/ ├── 1.jpg ├── 2.jpg └── 3.jpg ```
+```bash 
+.  
+├── external-html/ 
+│   └── consent.html 
+├── index.html 
+├── jspsych/
+└── stimuli/ 
+  ├── 1.jpg 
+  ├── 2.jpg 
+  └── 3.jpg 
+```
 
 2. Click the **Upload** button, and you should be able to select all the above
 files from (1) and drag-and-drop into the modal window.
@@ -66,17 +75,33 @@ configuration dashboard.
 card. 
 3. It will expand, and you will select **Use this bucket to host a website**.
     1. It will prompt for an **Index document**, which you should call
-`index.html`, or whichever HTML file is the true index of your task. 
+       `index.html`, or whichever HTML file is the true index of your task. 
     2. (Optional, but recommended) Add an `error.html` file that AWS will route
-to in case of errors in server-side logic that happen from time to time.
+       to in case of errors in server-side logic that happen from time to time.
     3. Click **Save**.
 4. Now click on **Permissions** and then **Bucket Policy**.
 5. A code block editor should appear, and inside of that, paste the following
 (note that `<name-of-bucket>` needs to be replaced by the actual name of your
-bucket!): ``` { "Version": "2012-10-17", "Statement": [ { "Sid": "PublicRead",
-"Effect": "Allow", "Principal": "*", "Action": [ "s3:GetObject",
-"s3:GetObjectVersion" ], "Resource": "arn:aws:s3:::<name-of-bucket>/*”
-} ] } ```
+bucket!): 
+
+``` 
+{ 
+  "Version": "2012-10-17", 
+  "Statement": [ 
+    { 
+      "Sid": "PublicRead",
+      "Effect": "Allow", 
+      "Principal": "*", 
+      "Action": [ 
+        "s3:GetObject",
+        "s3:GetObjectVersion" 
+      ], 
+      "Resource": "arn:aws:s3:::<name-of-bucket>/*”
+    } 
+  ] 
+} 
+```
+
 6. Click **Save** and follow the prompt to confirm that this should be public.
 7. Your bucket is ready to configure with CloudFront.
 
@@ -95,7 +120,8 @@ particular, we need this SDK to link to both Cognito and S3 from the task.
 There are two ways to use the SDK. The most common way this lab will import the
 script is through a direct script link in the main HTML file:
 
-``` <script src="https://sdk.amazonaws.com/js/aws-sdk-2.713.0.min.js"></script>
+``` 
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.713.0.min.js"></script>
 ```
 
 The following JavaScript code block can be configured within another script for
