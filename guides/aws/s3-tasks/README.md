@@ -101,32 +101,55 @@ script is through a direct script link in the main HTML file:
 The following JavaScript code block can be configured within another script for
 any browser-based task:
 
-``` /*
- * You must use this cognitoIdentityPool string value and the "task-data-raw"
-   value
- * for the DIRECTORY. The BUCKET valuee will change based on the task.  */
+``` 
+
+/*
+ * You must use this cognitoIdentityPool string value and 
+ * the "task-data-raw" value for the DIRECTORY. The BUCKET value
+ * will change based on the task.
+ */
 
 const cognitoIdentityPool = "us-east-1:0f699842-4091-432f-8b93-a2d4b7bb5f20";
 const DIRECTORY = "task-data-raw"; const BUCKET = your-awesome-task-bucket;
+const BUCKET = "your-bucket-name-goes-here";
 
 /*
  * Save data at any point to S3 using this function.
  * It takes as arguments the string identifier of a participant
- * and the data in CSV form from the jsPsych data getter.  */ function
-   saveDataToS3(id, csv) {
+ * and the data in CSV form from the jsPsych data getter.  
+ */ 
 
-  AWS.config.update({ region: "us-east-1", credentials: new
-AWS.CognitoIdentityCredentials({ IdentityPoolId: cognitoIdentityPool }), })
+function saveDataToS3(id, csv) {
 
+  AWS.config.update({
+    region: "us-east-1", 
+    credentials: new AWS.CognitoIdentityCredentials({
+      IdentityPoolId: cognitoIdentityPool 
+    }), 
+  });
+
+  // You can change anything after the first `/` here, but only if
+  // you know the intended behavior of changing this.
   const filename = `${DIRECTORY}/${id}.csv`;
 
-  const bucket = new AWS.S3({ params: { Bucket: BUCKET }, apiVersion:
-"2006-03-01", })
+  const bucket = new AWS.S3({
+    params: { Bucket: BUCKET }, 
+    apiVersion: "2006-03-01", 
+  })
 
-  const objParams = { Key: filename, Body: csv }
+  const objParams = { 
+    Key: filename, 
+    Body: csv 
+  }
 
-  bucket.putObject(objParams, (err, data) => { if (err) { console.log("Error:
-", err.message); } else { console.log("Data: ", data); } });
+  bucket.putObject(objParams, function(err, data) { 
+    if (err) { 
+      console.log("Error: ", err.message); 
+    } else {
+      console.log("Data: ", data); 
+    } 
+  });
+
 
 } ```
 
