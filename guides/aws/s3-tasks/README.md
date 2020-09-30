@@ -182,7 +182,24 @@ function saveDataToS3(id, csv) {
 
 You will then reference this saving function within `on_finish` tags within
 your jsPsych timeline when you would like to write data to S3. Remember to pass
-in a participant identifier and the data to be saved in CSV format.
+in a participant identifier and the data to be saved in CSV format. This will 
+look like:
+
+```
+...,
+on_finish: function() {
+
+  const id = "<whatever-the-subject-id-is>"
+  const csv = jsPsych.data.get().csv()
+  
+  saveDataToS3(id, csv)
+  
+}
+...
+```
+
+It's _very_ important that you follow this pattern. The `on_finish` piece of jsPsych
+structures should use a generic function that _contains_ the `saveDataToS3` function.
 
 ## Configuring a CloudFront deployment
 
