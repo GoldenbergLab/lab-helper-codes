@@ -96,7 +96,7 @@ bucket!):
         "s3:GetObject",
         "s3:GetObjectVersion" 
       ], 
-      "Resource": "arn:aws:s3:::<name-of-bucket>/*”
+      "Resource": "arn:aws:s3:::<name-of-bucket>/*"
     } 
   ] 
 } 
