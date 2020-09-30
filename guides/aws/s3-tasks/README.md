@@ -131,13 +131,13 @@ any browser-based task:
 
 /*
  * You must use this cognitoIdentityPool string value and 
- * the "task-data-raw" value for the DIRECTORY. The BUCKET value
+ * the "task-data-raw" value for the BUCKET. The DIRECTORY value
  * will change based on the task.
  */
 
 const cognitoIdentityPool = "us-east-1:0f699842-4091-432f-8b93-a2d4b7bb5f20";
-const DIRECTORY = "task-data-raw"; const BUCKET = your-awesome-task-bucket;
-const BUCKET = "your-bucket-name-goes-here";
+const DATA_BUCKET = "task-data-raw";
+const DIRECTORY = "your-task-bucket-name-with-stage-goes-here";
 
 /*
  * Save data at any point to S3 using this function.
@@ -159,7 +159,7 @@ function saveDataToS3(id, csv) {
   const filename = `${DIRECTORY}/${id}.csv`;
 
   const bucket = new AWS.S3({
-    params: { Bucket: BUCKET }, 
+    params: { Bucket: DATA_BUCKET }, 
     apiVersion: "2006-03-01", 
   })
 
