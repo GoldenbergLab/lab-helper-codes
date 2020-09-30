@@ -204,8 +204,7 @@ structures should use a generic function that _contains_ the `saveDataToS3` func
 ## Configuring a CloudFront deployment
 
 Now, you must create a CloudFront distribution for the S3 bucket, which will deploy
-the bucket's contents and publish the task. _Only after this will the data start
-saving to `task-data-raw`._
+the bucket's contents and publish the task.
 
 1. Navigate to the CloudFront service from the AWS Console.
 2. Click **Create Distribution** and then press **Get Started** under the "Web"
