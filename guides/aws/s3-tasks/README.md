@@ -203,3 +203,24 @@ structures should use a generic function that _contains_ the `saveDataToS3` func
 
 ## Configuring a CloudFront deployment
 
+Now, you must create a CloudFront distribution for the S3 bucket, which will deploy
+the bucket's contents and publish the task. _Only after this will the data start
+saving to `task-data-raw`._
+
+1. Navigate to the CloudFront service from the AWS Console.
+2. Click **Create Distribution** and then press **Get Started** under the "Web"
+   method of content delivery.
+3. Paste the endpoint of your task's S3 bucket in the field called **Origin Domain Name**.
+4. Where it asks for **Viewer Protocol Policy**, select **Redirect HTTP to HTTPS**.
+5. For the dropdown selector called **Cache Policy**, select **Managed-CachingDisabled**.
+6. For the option **Compress Objects Automatically**, select **Yes**.
+7. (Future use): For **SSL Certificate**, select **Custom SSL Certificate (example.com)** and...
+8. Submit by choosing **Create Distribution** again.
+
+Once these steps are completing, AWS will begin deploying the task. It can take up to a few
+hours to finish deploying depending on how busy AWS's deployment queue is. Typically, however,
+it should be less than ten minutes. Once ready, you'll be able to navigate to your deployed
+task website.
+
+This website will soon be customized for our lab (see point 7. above), but for now, you will
+find the task at a domain of type: `*.cloudfront.net`.
