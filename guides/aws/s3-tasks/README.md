@@ -131,7 +131,7 @@ any browser-based task:
 
 /*
  * You must use this cognitoIdentityPool string value and 
- * the "task-data-raw" value for the BUCKET. The DIRECTORY value
+ * the "task-data-raw" value for DATA_BUCKET. The DIRECTORY value
  * will change based on the task.
  */
 
