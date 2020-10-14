@@ -9,6 +9,7 @@
 - [Syncing your task to its `task-data-raw`
   folder](#syncing-your-task-to-its-task-data-raw-folder)
 - [Configuring a CloudFront deployment](#configuring-a-cloudfront-deployment)
+- [Specific task variations](#specific-task-variations)
 
 <!-- tocstop -->
 
@@ -223,3 +224,80 @@ task website.
 
 This website will soon be customized for our lab (see point 7. above), but for now, you will
 find the task at a domain of type: `*.cloudfront.net`.
+
+## Specific Task Variations
+
+### Sequential Tasks
+
+1. Make sure function saveDataToS3 is in the functions.js file and not the main html file.
+
+2. Modify the function so that id refers to the global Face.ID variable and so that the function can be called without passing in arguments.
+
+```function saveDataToS3() {
+
+
+  id = Face.ID
+  csv = jsPsych.data.get().csv()
+
+  AWS.config.update({
+    region: "us-east-1", 
+    credentials: new AWS.CognitoIdentityCredentials({
+      IdentityPoolId: cognitoIdentityPool 
+    }), 
+  });
+
+  const filename = `${DIRECTORY}/${id}.csv`;
+
+  const bucket = new AWS.S3({
+    params: { Bucket: BUCKET }, 
+    apiVersion: "2006-03-01", 
+  })
+
+  const objParams = { 
+    Key: filename, 
+    Body: csv 
+  }
+
+  bucket.putObject(objParams, function(err, data) { 
+    if (err) { 
+      console.log("Error: ", err.message); 
+    } else {
+      console.log("Data: ", data); 
+    } 
+  });
+
+
+} 
+```
+3. Modify the following variables to contain the saveDataToS3 function. Not that sometimes the function fails to work with on_finish and instead we use on_start.
+
+``` 
+var imageDescription = {
+    type: 'survey-text',
+    questions: [{prompt: "Please describe the picture in your own words"}],
+    preamble: function() {
+      var curr_stim = imageTestDescription.shift()
+      return '<img src='+curr_stim+'></img>';
+    },
+    on_finish: function(data){
+      saveDataToS3()
+      Face.description = JSON.parse(data.responses).Q0; } //save description
+  };
+
+
+var attentionCheck = { //function for the attention check
+    timeline: [askTypeWord],
+    loop_function: checkTyping,
+    on_start: function(data){
+      saveDataToS3()}
+  };
+
+  var connectSurvey = {
+      type: 'image-button-response',
+      stimulus: "",
+      choices: ['Begin Survey'],
+      on_finish: function(data){
+      saveDataToS3()}
+  };
+  ```
+
