@@ -233,7 +233,9 @@ find the task at a domain of type: `*.cloudfront.net`.
 
 2. Modify the function so that id refers to the global Face.ID variable and so that the function can be called without passing in arguments.
 
-```function saveDataToS3() {
+```
+
+function saveDataToS3() {
 
 
   id = Face.ID
