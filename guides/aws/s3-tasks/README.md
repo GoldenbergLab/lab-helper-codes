@@ -9,6 +9,7 @@
 - [Syncing your task to its `task-data-raw`
   folder](#syncing-your-task-to-its-task-data-raw-folder)
 - [Configuring a CloudFront deployment](#configuring-a-cloudfront-deployment)
+- [Downloading task data](#downloading-task-data)
 - [Specific task variations](#specific-task-variations)
 
 <!-- tocstop -->
@@ -225,7 +226,11 @@ task website.
 This website will soon be customized for our lab (see point 7. above), but for now, you will
 find the task at a domain of type: `*.cloudfront.net`.
 
-## Specific Task Variations
+## Downloading task data
+
+Outline: You can only download one file at a time on S3 console. So you need to install the aws client in order to effectively download more stuff
+
+## Specific task variations
 
 ### Sequential Tasks
 
