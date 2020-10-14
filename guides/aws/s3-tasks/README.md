@@ -234,7 +234,6 @@ find the task at a domain of type: `*.cloudfront.net`.
 2. Modify the function so that id refers to the global Face.ID variable and so that the function can be called without passing in arguments.
 
 ```
-
 function saveDataToS3() {
 
 
@@ -303,3 +302,14 @@ var attentionCheck = { //function for the attention check
   };
   ```
 
+4. Final notes of modifications: make new distinction between EU and US consent, get rid of references to checkUser function (temporarily until we construct a new one), change the order of items pushed into collective_emotion_estimation
+
+```
+var participant_id = { //to check if participants have entered ID (number/character, no punctuation allowed)
+    timeline: [enter_id],
+    loop_function: checkID,
+    // loop_function: checkUser
+  };
+  
+collective_emotion_estimation.push(checkPhone, participant_id, imageDescription);
+```
