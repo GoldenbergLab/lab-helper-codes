@@ -211,7 +211,7 @@ the bucket's contents and publish the task.
 1. Navigate to the CloudFront service from the AWS Console.
 2. Click **Create Distribution** and then press **Get Started** under the "Web"
    method of content delivery.
-3. Paste the endpoint of your task's S3 bucket in the field called **Origin Domain Name**.
+3. Paste the endpoint (web address) of your task's S3 bucket in the field called **Origin Domain Name**.
 4. Where it asks for **Viewer Protocol Policy**, select **Redirect HTTP to HTTPS**.
 5. For the dropdown selector called **Cache Policy**, select **Managed-CachingDisabled**.
 6. For the option **Compress Objects Automatically**, select **Yes**.
