@@ -65,7 +65,7 @@ example, you may have a structure of files that looks like this:
 ```
 
 2. Click the **Upload** button, and you should be able to select all the above
-files from (1) and drag-and-drop into the modal window.
+files from (1) and drag-and-drop into the modal window. IMPORTANT: **if you don't drag and drop, AWS WIll NOT upload your folders. That means any img/, jspsych/, etc will not be in the bucket, resulting in a broken website.**
 3. Confirm that the files are correct and click **Upload**.
 
 ## Update bucket to host task
