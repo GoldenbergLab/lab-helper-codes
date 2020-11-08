@@ -6,11 +6,12 @@
 - [Create buckets for task](#create-buckets-for-task)
 - [Uploading your task to S3](#uploading-your-task-to-s3)
 - [Update bucket to host task](#update-bucket-to-host-task)
-- [Syncing your task to its `task-data-raw`
-  folder](#syncing-your-task-to-its-task-data-raw-folder)
+- [Syncing your task to its `task-data-raw` folder](#syncing-your-task-to-its-task-data-raw-folder)
 - [Configuring a CloudFront deployment](#configuring-a-cloudfront-deployment)
+- [Configuring task web domain on Route 53](#configuring-task-web-domain-on-route-53)
 - [Downloading task data](#downloading-task-data)
 - [Specific task variations](#specific-task-variations)
+  * [Sequential Tasks](#sequential-tasks)
 
 <!-- tocstop -->
 
