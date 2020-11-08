@@ -215,8 +215,11 @@ the bucket's contents and publish the task.
 4. Where it asks for **Viewer Protocol Policy**, select **Redirect HTTP to HTTPS**.
 5. For the dropdown selector called **Cache Policy**, select **Managed-CachingDisabled**.
 6. For the option **Compress Objects Automatically**, select **Yes**.
-7. (Future use): For **SSL Certificate**, select **Custom SSL Certificate (example.com)** and...
-8. Submit by choosing **Create Distribution** again.
+7. You must make an **Alternate Domain Name (CNAME)** to link it to our lab's study web domain. To do so,
+   you will include text describing your task, such as `example-task-name-and-phase.hbssurvey.com`.
+8. For **SSL Certificate**, select **Custom SSL Certificate (example.com)**. Then select
+   from the dropdown `*.hbssurvey.com (a715bbbd-ad62-49a0-8c75-9fdb9d542633)`
+9. Submit by choosing **Create Distribution** again.
 
 Once these steps are completing, AWS will begin deploying the task. It can take up to a few
 hours to finish deploying depending on how busy AWS's deployment queue is. Typically, however,
@@ -225,6 +228,29 @@ task website.
 
 This website will soon be customized for our lab (see point 7. above), but for now, you will
 find the task at a domain of type: `*.cloudfront.net`.
+
+## Configuring task web domain on Route 53
+
+With a CloudFront deployment of a task, the final step to making it ready for participants
+is to create a subdomain on our lab's study domain (e.g., `new-task-name-and-phase.hbssurvey.com`).
+You will need your CloudFront deployment's URL to complete this step. The URL will look similar to
+`dbmsd35c91.cloudfront.net`.
+
+
+1. Navigate to the Route 53 service from the AWS Console.
+2. Click **Hosted zones**, and then click the **hbssurvey.com** domain link in the table.
+3. A list in a table called "Records" will appear. Click **Create record**.
+4. When prompted to "Choose routing policy", select **Simple routing** and click **Next**.
+5. Configure **two** separate records, *A* and *AAAA*. Do the following to create each:
+  a. Click **Define simple record**.
+  b. For "Record name", write the subdomain for the task and phase. This should _match exactly_ the
+     name you give to the CloudFront distribution `new-task-name-and-phase`.
+  c. For "Value/Route traffic to", select "Alias to CloudFront distribution". It should automatically
+     fill in "US East (N. Virginia)" for the region. Then, "Choose distribution" will provide in a dropdown
+     the names of CloudFront distributions that are equipped for the _exact name_ used as a CNAME in the previous
+     set of steps. The distribution you should match the CloudFront URL (i.e., `dbmsd35c91.cloudfront.net`).
+  d. Select for "Record type" either **A** or **AAAA**, or whichever of these two you have not yet done.
+6. Finally, click **Create records**.
 
 ## Downloading task data
 
