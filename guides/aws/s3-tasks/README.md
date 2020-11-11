@@ -282,7 +282,7 @@ function saveDataToS3() {
   const filename = `${DIRECTORY}/${id}.csv`;
 
   const bucket = new AWS.S3({
-    params: { Bucket: BUCKET }, 
+    params: { Bucket: DATA_BUCKET }, 
     apiVersion: "2006-03-01", 
   })
 
