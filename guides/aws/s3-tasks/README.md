@@ -243,18 +243,14 @@ You will need your CloudFront deployment's URL to complete this step. The URL wi
 3. A list in a table called "Records" will appear. Click **Create record**.
 4. When prompted to "Choose routing policy", select **Simple routing** and click **Next**.
 5. Configure **two** separate records, *A* and *AAAA*. Do the following to create each:
-  a. Click **Define simple record**.
-  
-  b. For "Record name", write the subdomain for the task and phase. This should _match exactly_ the
+  - Click **Define simple record**.
+  - For "Record name", write the subdomain for the task and phase. This should _match exactly_ the
      name you give to the CloudFront distribution `new-task-name-and-phase`.
-     
-  c. For "Value/Route traffic to", select "Alias to CloudFront distribution". It should automatically
+  - For "Value/Route traffic to", select "Alias to CloudFront distribution". It should automatically
      fill in "US East (N. Virginia)" for the region. Then, "Choose distribution" will provide in a dropdown
      the names of CloudFront distributions that are equipped for the _exact name_ used as a CNAME in the previous
      set of steps. The distribution you should match the CloudFront URL (i.e., `dbmsd35c91.cloudfront.net`).
-     
-  d. Select for "Record type" either **A** or **AAAA**, or whichever of these two you have not yet done.
-  
+  - Select for "Record type" either **A** or **AAAA**, or whichever of these two you have not yet done.
 6. Finally, click **Create records**.
 
 ## Downloading task data
