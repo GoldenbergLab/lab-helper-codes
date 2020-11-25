@@ -1,4 +1,4 @@
-# Creating and running a task in S3
+# Creating a task in S3
 
 <!-- toc -->
 
@@ -9,7 +9,6 @@
 - [Syncing your task to its `task-data-raw` folder](#syncing-your-task-to-its-task-data-raw-folder)
 - [Configuring a CloudFront deployment](#configuring-a-cloudfront-deployment)
 - [Configuring task web domain on Route 53](#configuring-task-web-domain-on-route-53)
-- [Downloading task data](#downloading-task-data)
 - [Specific task variations](#specific-task-variations)
   * [Sequential Tasks](#sequential-tasks)
 
@@ -253,9 +252,7 @@ You will need your CloudFront deployment's URL to complete this step. The URL wi
    - Select for "Record type" either **A** or **AAAA**, or whichever of these two you have not yet done.
 6. Finally, click **Create records**.
 
-## Downloading task data
 
-Outline: You can only download one file at a time on S3 console. So you need to install the aws client in order to effectively download more stuff
 
 ## Specific task variations
 
