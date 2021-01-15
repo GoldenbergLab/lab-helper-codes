@@ -1,6 +1,10 @@
 # Guide to running a task on AWS
 
-- Step 0: Make sure you have deployed the task. 
+- Step 0: Make sure you have deployed the task. Is your-task-here.hbssurvey.com up and running? 
+- Step 1: Check [AWS status](https://status.aws.amazon.com/). 
+- Step 2: Eliminate common human errors
+- Step 3: Go through the task once
+
 
 ## Step 0 - make sure you have deployed the task.
 Follow the guide to deploying s3 tasks here. Once you are finished, you should have a link to your task at your-task-here.hbssurvey.com. Only proceed once you have done this. 
@@ -24,4 +28,4 @@ Go through your entire task once, download your AWS data, and make sure it is co
 
 ## Step 5 - Downloading task data
 
-Outline: You can only download one file at a time on S3 console. So you need to install the aws client in order to effectively download more stuff
+Outline: You can only download one file at a time on S3 console. So you need to install the aAWS client or a File Transfer software in order to effectively download more
