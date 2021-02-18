@@ -163,6 +163,8 @@ evalc(p)
 This will show this boring (but composed-on-the-grid) graph in your local rsudio plots pane.
 We might be able to make this shorter with a helper function someday, but my initial attempts failed.
 
+![image](5hOQMg17b6.png)
+
 Yet, this brings about an important issue. When the remote instance encounters some errors (not all), the *connection* will break. 
 As this only brings down the connection, not the entire remote R instance, we can reconnect easily, without losing anything.
 
