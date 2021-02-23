@@ -73,8 +73,8 @@ files from (1) and drag-and-drop into the modal window. IMPORTANT: **if you don'
 1. From the S3 console, click on the bucket name you want to update (i.e.,
 `<your-unique-bucket-name>-staging`), which will bring you to the bucket’s
 configuration dashboard.
-2. Click on **Properties**, and then select the **Static website hosting**
-card. 
+2. Click on **Properties**, and then click edit on the **Static website hosting**
+card. You need to enable Static website hosting.
 3. It will expand, and you will select **Use this bucket to host a website**.
     1. It will prompt for an **Index document**, which you should call
        `index.html`, or whichever HTML file is the true index of your task. 
@@ -83,8 +83,8 @@ card.
     3. Click **Save**.
 4. Now click on **Permissions** and then **Bucket Policy**.
 5. A code block editor should appear, and inside of that, paste the following
-(note that `<name-of-bucket>` needs to be replaced by the actual name of your
-bucket!): 
+(note that `name-of-bucket` needs to be replaced by the actual name of your
+bucket!) : 
 
 ``` 
 { 
@@ -98,7 +98,7 @@ bucket!):
         "s3:GetObject",
         "s3:GetObjectVersion" 
       ], 
-      "Resource": "arn:aws:s3:::<name-of-bucket>/*"
+      "Resource": "arn:aws:s3:::name-of-bucket/*"
     } 
   ] 
 } 
