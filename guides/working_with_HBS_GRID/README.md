@@ -1,45 +1,54 @@
+<!-- TOC updateOnSave:false --> 
+- [Step 0 (do once)](#step-0-do-once)
+- [Step 1 (The remote R instance)](#step-1-the-remote-r-instance)
+- [Step 2 (The ssh tunnel)](#step-2-the-ssh-tunnel)
+- [Step 3 (The local R instance)](#step-3-the-local-r-instance)
+- [Using rstudio with the compute power of the HBS grid](#using-rstudio-with-the-compute-power-of-the-hbs-grid)
+- [Refs](#refs)
+<!-- /TOC -->
+
 There are several methods to work with your local installation of rstudio, using the compute power of the HBS grid. Currently, I (Michael Pinus), think using the `remoter` package is the best method available (without paying for Rstudio Server Pro).
 
-# Everything needs to be done when connected to the HBS VPN. 
+**Important: Everything needs to be done when connected to the HBS VPN.**
 
-## Step 0 (do once)
+## Package Installation (do once)
 
-### locally
+### Your local computer
 In rstudio, install the `remoter` package using
 
 ```r
-install.packages("remoter", dependencies=TRUE)
+R > install.packages("remoter", dependencies=TRUE)
 ```
 
 ### HBS grid
 Open a local terminal and ssh into your account. Enter your password when prompted.
 
 ```
-ssh rcs_user@hbsgrid.hbs.edu
+> ssh rcs_user@hbsgrid.hbs.edu
 ```
 
 Then, you'll need to open an R instance, for this, you'll need to load the R module:
 
 ```
-module load R/4.0.2
+> module load R/4.0.2
 ```
 
 If you want, you can also load additional modules, such as Anaconda. If you do that, you might as well activate your desired conda environment:
 
 ```
-module load anaconda/2020.07
-conda activate sp290
+> module load anaconda/2020.07
+> conda activate sp290
 ```
 
 Next, get an R instance running with:
 ```
-R
+(sp290) > R
 ```
 
 Lastly, install the `remoter` package:
 
 ```r
-install.packages("remoter", dependencies=TRUE)
+R > install.packages("remoter", dependencies=TRUE)
 ```
 You can now close everything, as the next steps do not assume you have any connections open, or leave everything as-is. 
 
@@ -51,18 +60,18 @@ To get started with using your local installation of rstudio, using the compute 
 We'll start with the remote R instance. If you don't have it open from step 0, follow step 0's instructions but skip the package installation. Briefly, in a local terminal:
 
 ```
-ssh rcs_user@hbsgrid.hbs.edu
-module load R/4.0.2
-module load anaconda/2020.07
-conda activate sp290
-R
+> ssh rcs_user@hbsgrid.hbs.edu
+> module load R/4.0.2
+> module load anaconda/2020.07
+> conda activate sp290
+(sp290) > R
 ```
 
 Next, let's make the remote R instance listen for our calls
 
 ```r
-library("remoter")
-remoter::server()
+R > library("remoter")
+R > remoter::server()
 ```
 
 ## Step 2 (The ssh tunnel)
@@ -70,7 +79,7 @@ remoter::server()
 Open **an additional** terminal window and create a tunnel, specifying a port redirect from your local 55555 port, to the remote machine's 55555 port. 
   
 ```
-ssh rcs_user@hbsgrid.hbs.edu  -L 55555:localhost:55555 -N
+> ssh rcs_user@hbsgrid.hbs.edu  -L 55555:localhost:55555 -N
 ```
 **NOTE:** It will look like the terminal window hanged. You will have no indication that it worked. That's annoying, but you should regulate yourself.
 
@@ -79,8 +88,8 @@ ssh rcs_user@hbsgrid.hbs.edu  -L 55555:localhost:55555 -N
 Fire up your beautifully-customized rstudio instance, and run the following commands:
 
 ```r
-library("remoter")
-remoter::client()
+R > library("remoter")
+R > remoter::client()
 ```
 
 you should see the console prompt changed to `remoter>`. 
@@ -94,6 +103,7 @@ An important `remoter` function to know before we continue is `evalc()` which ev
 For instance: 
 
 ```r
+# while in an R console:
 temp <- "Foo!" 
 temp # `temp` on remote
 # [1] "Foo!" 
@@ -106,6 +116,7 @@ This will create a remote object `temp`, and a local object `temp_REMOTE`. The r
 However, any updates to the remote object will not be reflected in the local object, unless the remote object is deleted and re-created:
 
 ```r
+# while in an R console:
 rm(temp)
 temp <- "Foo!"
 temp # `temp` on remote
@@ -135,6 +146,7 @@ evalc(temp_REMOTE) # `temp_REMOTE` on local
 Also, this is a preview of the remote object, not the entire remote object. I'll also use now `rmc()` which removes local objects:
 
 ```r
+# while in an R console:
 rm(temp)
 rmc(temp_REMOTE)
 temp <- list("Foo!", "Bar!")
@@ -154,6 +166,7 @@ If we want the actual remote object in our local environment, e.g., for plotting
 Luckily, we can use `s2c()` and `c2s()` to pass objects between our local environment and the remote environment (server to client, client to server, respectively).
 
 ```r
+# while in an R console:
 library(ggplot2)
 p <- qplot(x = mtcars$wt, y = mtcars$mpg)
 s2c(p)
@@ -163,12 +176,13 @@ evalc(p)
 This will show this boring (but composed-on-the-grid) graph in your local rsudio plots pane.
 We might be able to make this shorter with a helper function someday, but my initial attempts failed.
 
-![image](5hOQMg17b6.png)
+![image](figures/5hOQMg17b6.png)
 
 Yet, this brings about an important issue. When the remote instance encounters some errors (not all), the *connection* will break. 
 As this only brings down the connection, not the entire remote R instance, we can reconnect easily, without losing anything.
 
 ```r
+# while in an R console:
 temp <- "Foo!"
 temp # `temp` on remote
 # [1] "Foo!" 
@@ -189,6 +203,7 @@ Note the `remoter>` prompt is gone, and we're back to our regular local R instan
 Let's reconnect, and see if `temp` is still there.
 
 ```r
+# while in an R console:
 remoter::client()
 temp # `temp` is still on remote
 # [1] "Foo!" 
@@ -197,13 +212,14 @@ ls()
 ```
 Lastly, there is also the option to pipe commands to the server in batch using the batch() function:
 ```r
+# while in an R console:
 # Passing an R script file
 remoter::batch(file="my_rscript_file.r")
 # Passing in a script manually
 remoter::batch(script="1+1")
 ```
 
-## Refs
+## remoter Package References
 
 - [remoter website](https://github.com/RBigData/remoter)
 - [remoter user-guide](https://cran.r-project.org/web/packages/remoter/vignettes/remoter.pdf)
