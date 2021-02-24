@@ -1,10 +1,10 @@
-<!-- TOC updateOnSave:false --> 
-- [Step 0 (do once)](#step-0-do-once)
+<!-- TOC updateOnSave:false -->
+- [Package Installation (do once)](#package-installation-do-once)
 - [Step 1 (The remote R instance)](#step-1-the-remote-r-instance)
 - [Step 2 (The ssh tunnel)](#step-2-the-ssh-tunnel)
 - [Step 3 (The local R instance)](#step-3-the-local-r-instance)
 - [Using rstudio with the compute power of the HBS grid](#using-rstudio-with-the-compute-power-of-the-hbs-grid)
-- [Refs](#refs)
+- [remoter Package References](#remoter-package-references)
 <!-- /TOC -->
 
 There are several methods to work with your local installation of rstudio, using the compute power of the HBS grid. Currently, I (Michael Pinus), think using the `remoter` package is the best method available (without paying for Rstudio Server Pro).
