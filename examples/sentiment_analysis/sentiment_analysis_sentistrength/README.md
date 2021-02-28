@@ -12,5 +12,7 @@ In the same folder you should also have:
 2. The folder **SentiStrength_Data** which contains the dictionaries. 
 3. **sentiment_rater_new.py** which has the code that communicates with the the java code.
 
-Ones all three stages have been implemented, follow the instructions on jupyeter notebook. 
+Ones all three stages have been implemented, follow the instructions on jupyter notebook. 
+
+**Memory usage:** on a file of about 200k short texts it takes 24GB memory and several hours to run the operation. Consider sending to the GRID or similar apparatus.
 
