@@ -1,6 +1,7 @@
 # Lab Coding Guidance
 
-Helpful guides and examples to make life easier.
+This repository is a collection of knowedlge that is collected in the lab. It includes guides on how to do things, from very technichal such as using AWS to specific coding utilities such as image manipulation. We welcome lab members and visitors to improve these folders and to add their own. 
+
 
 ## Guides
 
@@ -9,7 +10,7 @@ Helpful guides and examples to make life easier.
 - [Amazon Web Services](./guides/aws): Guide to install, configure, and use AWS.
 - [Prolific](./guides/prolific): Guide to avoid headaches with approving Prolific submissions.
 
-## Examples
+## Specific Coding Solutions
 
 - [Image Manipulation](./examples/image_manipulation): Pythonic helper code to change images (e.g., reduce resolution or change background).
 - [Sentiment Analysis](./examples/sentiment_analysis): Tools for retrieving emotion evaluations.
