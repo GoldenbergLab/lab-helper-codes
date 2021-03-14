@@ -50,4 +50,11 @@ project. Our repository names should:
 - Use versionless phrases.
   - :white_check_mark: `amplification`
   - :no_entry_sign: `amplification-10-02` or `amplification-v1`
- 
+
+### Branch Names
+
+Within a repository, you will have a minimum of one _default_ branch. A default
+branch should be considered the _most stable_ branch, meaning the least likely to
+contain bugs, errors, badly-written code, etc. In GitHub, the `main` branch is
+the default branch (or `master` if created prior to late 2020; update the default
+to `main` if so, [see why here](https://github.com/github/renaming)).
