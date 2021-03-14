@@ -8,11 +8,41 @@ features most relevant to our lab's coding needs.
 
 <!-- toc -->
 
+- [Command Line](#command-line)
+  * [Command Line For Absolute Beginners](#command-line-for-absolute-beginners)
+  * [Command Line After Some Practice](#command-line-after-some-practice)
 - [Text Editors](#text-editors)
   * [Editors Available](#editors-available)
   * [Editor Configurations](#editor-configurations)
 
 <!-- tocstop -->
+
+## Command Line
+
+The _command line_ is the best way to interact with computers and that is its
+sole function. Everything you do with a command line is fundamentally about sending
+commands that a computer interprets and tries to respond to.
+
+### Command Line For Absolute Beginners
+
+If you have never used the command line, this section is for you.
+
+**Is the command line hard to use?** If you've never learned how to use it, yes. But
+that just means it is probably time to learn; **everyone** can learn how to use the command
+line, and that includes **you**!
+
+**Where should I start?** Start with [Terminus](http://web.mit.edu/mprat/Public/web/Terminus/Web/main.html),
+a game created by MIT computer scientists to help you learn command line basics.
+
+### Command Line After Some Practice
+
+Once you feel more comfortable with the concept of command line tools, and have had some
+real experience using one for a project, it's time to step up your game. While many
+avenues are available, these referenced links include useful collections of materials
+to make your command line experience even better:
+
+- [The Art of Command Line](https://github.com/jlevy/the-art-of-command-line)
+- [MacOS Command Line](https://github.com/herrbischoff/awesome-macos-command-line)
 
 ## Text Editors
 
