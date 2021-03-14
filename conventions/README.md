@@ -62,3 +62,10 @@ branch should be considered the _most stable_ branch, meaning the least likely t
 contain bugs, errors, badly-written code, etc. In GitHub, the `main` branch is
 the default branch (or `master` if created prior to late 2020; update the default
 to `main` if so, [see why here](https://github.com/github/renaming)).
+
+## JavaScript
+
+Anytime you use JavaScript, you should follow tried and true code style guidelines,
+and especially so when that code is shared. While we will adopt a set of lab-specific
+conventions for writing JavaScript over time, arguably the best style guide is the
+[Airbnb JavaScript Style Guide](https://airbnb.io/javascript/).
