@@ -7,6 +7,7 @@ This repository is a collection of knowedlge that is collected in the lab. It in
 
 - [Fundamentals](./guides/fundamentals): Guide to fundamentals of writing,
   maintaining, and collaborating on code.
+- [HBS Grid](./hbs-grid): Guide to using the HBS Grid.
 - [Amazon Web Services](./guides/aws): Guide to install, configure, and use AWS.
 - [Prolific](./guides/prolific): Guide to avoid headaches with approving Prolific submissions.
 

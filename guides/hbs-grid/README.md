@@ -1,31 +1,50 @@
-<!-- TOC updateOnSave:false -->
-- [Package Installation (do once)](#package-installation-do-once)
-- [Step 1 (The remote R instance)](#step-1-the-remote-r-instance)
-- [Step 2 (The ssh tunnel)](#step-2-the-ssh-tunnel)
-- [Step 3 (The local R instance)](#step-3-the-local-r-instance)
-- [Using rstudio with the compute power of the HBS grid](#using-rstudio-with-the-compute-power-of-the-hbs-grid)
-- [remoter Package References](#remoter-package-references)
-<!-- /TOC -->
+# HBS Grid
+
+The following sections can be used to improve your experience using the
+HBS Grid.
+
+<!-- toc -->
+
+- [HBS Grid Connection via RStudio](#hbs-grid-connection-via-rstudio)
+  * [Requirements](#requirements)
+    + [Local Installation](#local-installation)
+    + [SSH Connection via Shell](#ssh-connection-via-shell)
+    + [Configure your HBS Grid environment in R](#configure-your-hbs-grid-environment-in-r)
+  * [Remote R Instance](#remote-r-instance)
+  * [The SSH Tunnel](#the-ssh-tunnel)
+  * [Local R instance)](#local-r-instance)
+  * [Using RStudio on HBS Grid](#using-rstudio-on-hbs-grid)
+  * [`remoter` Package References](#remoter-package-references)
+
+<!-- tocstop -->
+
+## HBS Grid Connection via RStudio
+
+**Everything needs to be done when connected to the HBS VPN.**
 
 There are several methods to work with your local installation of rstudio, using the compute power of the HBS grid. Currently, I (Michael Pinus), think using the `remoter` package is the best method available (without paying for Rstudio Server Pro).
 
-**Important: Everything needs to be done when connected to the HBS VPN.**
+### Requirements
 
-## Package Installation (do once)
+The `remoter` package is required for this guide.
 
-### Your local computer
-In rstudio, install the `remoter` package using
+#### Local Installation
+
+In an RStudio console, install the `remoter` package using
 
 ```r
 R > install.packages("remoter", dependencies=TRUE)
 ```
 
-### HBS grid
-Open a local terminal and ssh into your account. Enter your password when prompted.
+#### SSH Connection via Shell
+
+Open a local shell or terminal and SSH into your account. Enter your password if prompted.
 
 ```
 > ssh rcs_user@hbsgrid.hbs.edu
 ```
+
+#### Configure your HBS Grid environment in R
 
 Then, you'll need to open an R instance, for this, you'll need to load the R module:
 
@@ -37,27 +56,29 @@ If you want, you can also load additional modules, such as Anaconda. If you do t
 
 ```
 > module load anaconda/2020.07
-> conda activate sp290
+> conda activate dlatk
 ```
 
 Next, get an R instance running with:
 ```
-(sp290) > R
+(dlatk) > R
 ```
 
-Lastly, install the `remoter` package:
+Lastly, install the `remoter` package again, but this time in the HBS Grid environment:
 
 ```r
 R > install.packages("remoter", dependencies=TRUE)
 ```
+
 You can now close everything, as the next steps do not assume you have any connections open, or leave everything as-is. 
 
-## Step 1 (The remote R instance)
+### Remote R Instance
 
-After you completed Step 0 once, you should have the package installed both on your local machine and on your R instance in the grid.
+You should have the package installed both on your local machine and on your R instance in the grid.
+
 To get started with using your local installation of rstudio, using the compute power of the HBS grid, you'll need to have a remote R instance running (and listening), a local R instance running (and send command to the remote instance), and an active ssh tunnel.
 
-We'll start with the remote R instance. If you don't have it open from step 0, follow step 0's instructions but skip the package installation. Briefly, in a local terminal:
+We'll start with the remote R instance. Briefly, in your local shell or terminal:
 
 ```
 > ssh rcs_user@hbsgrid.hbs.edu
@@ -74,7 +95,7 @@ R > library("remoter")
 R > remoter::server()
 ```
 
-## Step 2 (The ssh tunnel)
+### The SSH Tunnel
 
 Open **an additional** terminal window and create a tunnel, specifying a port redirect from your local 55555 port, to the remote machine's 55555 port. 
   
@@ -83,7 +104,7 @@ Open **an additional** terminal window and create a tunnel, specifying a port re
 ```
 **NOTE:** It will look like the terminal window hanged. You will have no indication that it worked. That's annoying, but you should regulate yourself.
 
-## Step 3 (The local R instance)
+### Local R instance)
 
 Fire up your beautifully-customized rstudio instance, and run the following commands:
 
@@ -95,9 +116,10 @@ R > remoter::client()
 you should see the console prompt changed to `remoter>`. 
 Voilà, each command you send to your local R instance will be redirected to the remote instance. 
 
-# Using rstudio with the compute power of the HBS grid
+### Using RStudio on HBS Grid
 
-The local rstudio environment pane is limited, but workable. 
+The local RStudio environment pane is limited, but workable. 
+
 It will create 'previews' of the objects in the remote environment, with the '_REMOTE' suffix. 
 An important `remoter` function to know before we continue is `evalc()` which evaluate an object in the local environment, not the remote environment. 
 For instance: 
@@ -219,7 +241,7 @@ remoter::batch(file="my_rscript_file.r")
 remoter::batch(script="1+1")
 ```
 
-## remoter Package References
+### `remoter` Package References
 
 - [remoter website](https://github.com/RBigData/remoter)
 - [remoter user-guide](https://cran.r-project.org/web/packages/remoter/vignettes/remoter.pdf)
