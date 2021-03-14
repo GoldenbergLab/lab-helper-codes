@@ -47,9 +47,13 @@ project. Our repository names should:
 - Use hyphenated spaces.
   - :white_check_mark: `twitter-survey-client`
   - :no_entry_sign: `twitter_survey_client` or `twitterSurveyClient`
-- Use versionless phrases.
+- Use versionless phrases<sup>*</sup>.
   - :white_check_mark: `amplification`
   - :no_entry_sign: `amplification-10-02` or `amplification-v1`
+
+<sup>*</sup>If you find yourself wanting to version your repository name, you
+probably are interested in [releasing tagged versions](https://docs.github.com/en/github/administering-a-repository/managing-releases-in-a-repository)
+of the project instead.
 
 ### Branch Names
 
