@@ -15,22 +15,26 @@ Amazon S3 bucket names, RMarkdown file names, and so many more.
 
 <!-- toc -->
 
-- [Slack](#slack)
-  * [Channel Names](#channel-names)
-    + [Use all lowercase letters.](#use-all-lowercase-letters)
-    + [Use hyphenated spaces.](#use-hyphenated-spaces)
-    + [Use descriptive phrases.](#use-descriptive-phrases)
-    + [Use the minimum necessary words.](#use-the-minimum-necessary-words)
-    + [Use category prefixes for nested channel naming.](#use-category-prefixes-for-nested-channel-naming)
-- [GitHub](#github)
-  * [Repository Names](#repository-names)
-    + [Use all lowercase letters.](#use-all-lowercase-letters-1)
-    + [Use hyphenated spaces.](#use-hyphenated-spaces-1)
-    + [Use versionless phrases.](#use-versionless-phrases)
-  * [Branch Names](#branch-names)
-- [JavaScript](#javascript)
+- [Tool Conventions](#tool-conventions)
+  * [Slack](#slack)
+    + [Channel Names](#channel-names)
+      - [Use all lowercase letters.](#use-all-lowercase-letters)
+      - [Use hyphenated spaces.](#use-hyphenated-spaces)
+      - [Use descriptive phrases.](#use-descriptive-phrases)
+      - [Use the minimum necessary words.](#use-the-minimum-necessary-words)
+      - [Use category prefixes for nested channel naming.](#use-category-prefixes-for-nested-channel-naming)
+  * [GitHub](#github)
+    + [Repository Names](#repository-names)
+      - [Use all lowercase letters.](#use-all-lowercase-letters-1)
+      - [Use hyphenated spaces.](#use-hyphenated-spaces-1)
+      - [Use versionless phrases.](#use-versionless-phrases)
+    + [Branch Names](#branch-names)
+- [Code Conventions](#code-conventions)
+  * [JavaScript](#javascript)
 
 <!-- tocstop -->
+
+# Tool Conventions
 
 ## Slack
 
@@ -104,6 +108,8 @@ branch should be considered the _most stable_ branch, meaning the least likely t
 contain bugs, errors, badly-written code, etc. In GitHub, the `main` branch is
 the default branch (or `master` if created prior to late 2020; update the default
 to `main` if so, [see why here](https://github.com/github/renaming)).
+
+# Code Conventions
 
 ## JavaScript
 
