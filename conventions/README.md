@@ -20,18 +20,30 @@ Amazon S3 bucket names, RMarkdown file names, and so many more.
 Our lab's Slack channels represent virtual rooms in which we can collaborate
 on various topics. Our channel names should:
 
-- Use all lowercase letters.
-  - :white_check_mark: `code` or `language-analysis`
-  - :no_entry_sign: `Code` or `Language-Analysis`
-- Use hyphenated spaces.
-  - :white_check_mark: `language-analysis`
-  - :no_entry_sign: `language_analysis`
-- Use full words.
-  - :white_check_mark: `reinforcement-learning`
-  - :no_entry_sign: `rl`
-- Use the minimum necessary words.
-  - :white_check_mark: `papers`
-  - :no_entry_sign: `papers-we-recommend`
+#### Use all lowercase letters.
+
+- :white_check_mark: `code` or `language-analysis`
+- :no_entry_sign: `Code` or `Language-Analysis`
+
+#### Use hyphenated spaces.
+
+- :white_check_mark: `language-analysis`
+- :no_entry_sign: `language_analysis`
+
+#### Use full words.
+
+- :white_check_mark: `reinforcement-learning`
+- :no_entry_sign: `rl`
+
+#### Use the minimum necessary words.
+
+- :white_check_mark: `papers`
+- :no_entry_sign: `papers-we-recommend`
+
+#### Use category prefixes for nested channel naming.
+
+- :white_check_mark: `studies_twitter-survey` or `
+- :no_entry_sign: `papers-we-recommend`
 
 ## GitHub
 
@@ -41,17 +53,22 @@ Our lab's GitHub organization hosts many repositories that we use to collaborate
 repository name should represent the most general possible topic description for that
 project. Our repository names should:
 
-- Use all lowercase letters.
-  - :white_check_mark: `my-new-repository`
-  - :no_entry_sign: `My-New-Repository`
-- Use hyphenated spaces.
-  - :white_check_mark: `twitter-survey-client`
-  - :no_entry_sign: `twitter_survey_client` or `twitterSurveyClient`
-- Use versionless phrases<sup>*</sup>.
-  - :white_check_mark: `amplification`
-  - :no_entry_sign: `amplification-10-02` or `amplification-v1`
+#### Use all lowercase letters.
 
-<sup>*</sup>If you find yourself wanting to version your repository name, you
+- :white_check_mark: `my-new-repository`
+- :no_entry_sign: `My-New-Repository`
+
+#### Use hyphenated spaces.
+
+- :white_check_mark: `twitter-survey-client`
+- :no_entry_sign: `twitter_survey_client` or `twitterSurveyClient`
+
+#### Use versionless phrases.
+
+- :white_check_mark: `amplification`
+- :no_entry_sign: `amplification-10-02` or `amplification-v1`
+
+If you find yourself wanting to version your repository name, you
 probably are interested in [releasing tagged versions](https://docs.github.com/en/github/administering-a-repository/managing-releases-in-a-repository)
 of the project instead.
 
