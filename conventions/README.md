@@ -13,6 +13,25 @@ for any given topic of work we do because consistent, predictable names help us 
 what we're looking for. Named entities that we share are everywhere: Slack channels, GitHub repositories,
 Amazon S3 bucket names, RMarkdown file names, and so many more.
 
+<!-- toc -->
+
+- [Slack](#slack)
+  * [Channel Names](#channel-names)
+    + [Use all lowercase letters.](#use-all-lowercase-letters)
+    + [Use hyphenated spaces.](#use-hyphenated-spaces)
+    + [Use descriptive phrases.](#use-descriptive-phrases)
+    + [Use the minimum necessary words.](#use-the-minimum-necessary-words)
+    + [Use category prefixes for nested channel naming.](#use-category-prefixes-for-nested-channel-naming)
+- [GitHub](#github)
+  * [Repository Names](#repository-names)
+    + [Use all lowercase letters.](#use-all-lowercase-letters-1)
+    + [Use hyphenated spaces.](#use-hyphenated-spaces-1)
+    + [Use versionless phrases.](#use-versionless-phrases)
+  * [Branch Names](#branch-names)
+- [JavaScript](#javascript)
+
+<!-- tocstop -->
+
 ## Slack
 
 ### Channel Names
@@ -30,7 +49,7 @@ on various topics. Our channel names should:
 - :white_check_mark: `language-analysis`
 - :no_entry_sign: `language_analysis`
 
-#### Use full words.
+#### Use descriptive phrases.
 
 - :white_check_mark: `reinforcement-learning`
 - :no_entry_sign: `rl`
@@ -42,8 +61,14 @@ on various topics. Our channel names should:
 
 #### Use category prefixes for nested channel naming.
 
-- :white_check_mark: `studies_twitter-survey` or `
+Nested channel naming is useful for designating teams to work on a specific
+project or stage of project that has sibling channels, such as two different studies,
+which are category `studies`, or five different analysis-focused channels, which are
+`analysis`-categorized.
+
+- :white_check_mark: `studies_twitter-survey` or `analysis_emotion-amplification`
 - :no_entry_sign: `papers-we-recommend`
+
 
 ## GitHub
 
@@ -65,12 +90,12 @@ project. Our repository names should:
 
 #### Use versionless phrases.
 
-- :white_check_mark: `amplification`
-- :no_entry_sign: `amplification-10-02` or `amplification-v1`
-
 If you find yourself wanting to version your repository name, you
 probably are interested in [releasing tagged versions](https://docs.github.com/en/github/administering-a-repository/managing-releases-in-a-repository)
 of the project instead.
+
+- :white_check_mark: `amplification`
+- :no_entry_sign: `amplification-10-02` or `amplification-v1`
 
 ### Branch Names
 
