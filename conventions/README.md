@@ -71,7 +71,7 @@ which are category `studies`, or five different analysis-focused channels, which
 `analysis`-categorized.
 
 - :white_check_mark: `studies_twitter-survey` or `analysis_emotion-amplification`
-- :no_entry_sign: `papers-we-recommend`
+- :no_entry_sign: `studies-twitter-survey` or `emotion-amplification_analysis`
 
 
 ## GitHub
