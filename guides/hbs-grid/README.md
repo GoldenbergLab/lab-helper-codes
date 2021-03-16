@@ -241,6 +241,17 @@ remoter::batch(file="my_rscript_file.r")
 remoter::batch(script="1+1")
 ```
 
+#### Installing packages on HBS Grid using `remoter`
+
+Note that on the first time you run `install.packages()` in an R session you're asked to select a CRAN mirror.
+This prompt DOES NOT appear in your local R console/Rstudio, but instead appears in your remote R console (the terminal where you launced R remotly).
+Furtheremore, you only see:
+```
+Selection:
+```
+Without any further details or explanations. 
+You can type 1, and hit <Enter>. This should select the safe default CRAN server ('0-Cloud [https]'), and will let you continue with the installation process. I haven't encountered it myself yet, but I'm guessing this spliting of console output between the terminal and the local R console would also comeup when updating packages (selecting which packages to update), and in other scenarios. Please update this section with safe defaults for any scenario you encouter, as I admit this feels alot like shooting in the dark.
+ 
 ### `remoter` Package References
 
 - [remoter website](https://github.com/RBigData/remoter)
