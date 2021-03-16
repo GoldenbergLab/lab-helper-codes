@@ -85,7 +85,7 @@ We'll start with the remote R instance. Briefly, in your local shell or terminal
 > module load R/4.0.2
 > module load anaconda/2020.07
 > conda activate sp290
-(sp290) > R
+(dlatk) > R
 ```
 
 Next, let's make the remote R instance listen for our calls
