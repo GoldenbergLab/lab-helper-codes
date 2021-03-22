@@ -28,9 +28,11 @@ based on the phase (i.e., pilot data should be saved to a folder for only this
 task’s pilot data). The three buckets are listed below (see following step for
 how to create and configure):
 
-    1. `<your-unique-bucket-name>-staging`
-    2. `<your-unique-bucket-name>-pilot`
-    3. `<your-unique-bucket-name>-production`
+    1. `yourtask-yourName-month-year-staging` - you don't need this one if your task is simple, like the amplification/ network tasks that we run
+    2. `yourtask-yourName-month-year-pilot`
+    3. `yourtask-yourName-month-year-production`
+
+Example: `amplification-sad-amit-march-21-pilot`
     
 3. To create a bucket, click the **Create bucket** button in the S3 console.
 You do this for each bucket name as in (2) above. Select **US East (N.
