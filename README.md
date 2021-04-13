@@ -3,7 +3,7 @@
 This repository is a collection of knowedlge that is collected in the lab. It includes guides on how to do things, from very technichal such as using AWS to specific coding utilities such as image manipulation. We welcome lab members and visitors to improve these folders and to add their own. 
 
 
-## Lab Specific Guides
+## Lab Guides
 
 - [Fundamentals](./guides/fundamentals): Guide to fundamentals of writing,
   maintaining, and collaborating on code.
