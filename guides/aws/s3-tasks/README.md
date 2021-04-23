@@ -22,7 +22,7 @@ working with permissions to create and edit buckets in S3.
 ## Create buckets for task
 
 1. Log into the AWS Console and navigate to S3. To do this, you can use the search bar to search for s3.
-![navigation]<img src="navigate_s3.PNG" width="150">
+![navigation](navigate_s3.PNG)
 
 2. For your new task, you’ll ultimately create **3 buckets**. The goal of three buckets is
 to separate data records based on the phase (and thereby reduce confusion). The three buckets are:
