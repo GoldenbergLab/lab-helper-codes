@@ -41,13 +41,15 @@ Example: `amplification-sad-amit-march-21-pilot`
 3. Now we will make a bucket. Click the **Create bucket.**                                                                    
 ![create_bucket](create_bucket.PNG)
 
-4a. Enter your bucket name under **Bucket name**. If the settings of your new bucket are similar to the settings of a pre-existing bucket, simply navigate to **Copy settings from existing bucket** and select your bucket-to-copy from there. You may still have to uncheck **Block all public access**, but you are now done.                                                                     
+4. 
+
+	a. Enter your bucket name under **Bucket name**. If the settings of your new bucket are similar to the settings of a pre-existing bucket, simply navigate to **Copy settings from existing bucket** and select your bucket-to-copy from there. You may still have to uncheck **Block all public access**, but you are now done.                                                                     
 ![make_bucket_copy_settings](bucket_creation_1_copy_existing_settings.png)
 
-4b. If you are making a new bucket with settings from scratch, proceed with the following: 
-	- Select **US East (N. Virginia) us-east-1** as the region from the drop-down in **General configuration**.
-	- Uncheck the **Block all public access** box. This will allow public access to the bucket’s contents (i.e., the task website).
-	- Enable bucket versioning by selecting **Enable** under **Bucket Versioning**.
+	b. If you are making a new bucket with settings from scratch, proceed with the following: 
+		- Select **US East (N. Virginia) us-east-1** as the region from the drop-down in **General configuration**.
+		- Uncheck the **Block all public access** box. This will allow public access to the bucket’s contents (i.e., the task website).
+		- Enable bucket versioning by selecting **Enable** under **Bucket Versioning**.
 
 5. (if needed) Add tags to help differentiate the task, and what kind of task it is (i.e., survey):
     1. {Key: **lead-name**, Value: *your-name*}
