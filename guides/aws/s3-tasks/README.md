@@ -59,8 +59,7 @@ Example: `amplification-sad-amit-march-21-pilot`
     2. {Key: **alternate-lead-name**, Value: *another-name*}
     3. {Key: **month**, Value: *month*}
     4. {Key: **yr**, Value: *year*}
-    5. {Key: **taskName**, Value: *task-name*}                         
-    ![tags](tags.PNG)
+    5. {Key: **taskName**, Value: *task-name*}                                                                     
 
 6. Click **Create bucket.** Your bucket is ready to be populated with the task.
 
