@@ -54,9 +54,13 @@ Example: `amplification-sad-amit-march-21-pilot`
 		- Enable bucket versioning by selecting **Enable** under **Bucket Versioning**.                                 
 		![versioning](bucket_versioning.PNG)
 
-5. (if needed) Add tags to help differentiate the task, and what kind of task it is (i.e., survey):
+5. Add tags to help differentiate the task:
     1. {Key: **lead-name**, Value: *your-name*}
     2. {Key: **alternate-lead-name**, Value: *another-name*}
+    3. {Key: **month**, Value: *month*}
+    4. {Key: **yr**, Value: *year*}
+    5. {Key: **taskName**, Value: *task-name*}
+![tags](tags.PNG)
 
 6. Click **Create bucket.** Your bucket is ready to be populated with the task.
 
