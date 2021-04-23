@@ -48,7 +48,8 @@ Example: `amplification-sad-amit-march-21-pilot`
 
     b. If you are making a new bucket with settings from scratch, proceed with the following: 
 		- Select **US East (N. Virginia) us-east-1** as the region.
-		- Uncheck the **Block all public access** box. This will allow public access to the bucket’s contents (i.e., the task website).
+		- Uncheck the **Block all public access** box. This will prompt a new box to appear, confirming that you want to do this. Check the confirmation box.
+		![block_access](block_public_access.PNG)
 		- Enable bucket versioning by selecting **Enable** under **Bucket Versioning**.
 
 5. (if needed) Add tags to help differentiate the task, and what kind of task it is (i.e., survey):
