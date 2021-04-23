@@ -27,13 +27,13 @@ working with permissions to create and edit buckets in S3.
 2. For your new task, you’ll ultimately create **3 buckets**. The goal of three buckets is
 to separate data records based on the phase (and thereby reduce confusion). The three buckets are:
 
-   1. `yourtask-yourName-month-year-staging` 
+    1. `yourtask-yourName-month-year-staging` 
 		- you don't need this one if your task is simple, like the amplification/ network tasks that we run
 		- this stage is for troubleshooting the page itself (NOT collecting data)
-   2. `yourtask-yourName-month-year-pilot`
+    2. `yourtask-yourName-month-year-pilot`
 		- this stage is for testing the task and running the initial batch of participants (usually ~20-30 individuals)
 		- if any issues arise in this stage, make sure to change it before you run the "real" production batch
-   3. `yourtask-yourName-month-year-production`
+    3. `yourtask-yourName-month-year-production`
 		- this stage is for the actual experiment
 
 Example: `amplification-sad-amit-march-21-pilot`
@@ -43,10 +43,10 @@ Example: `amplification-sad-amit-march-21-pilot`
 
 4. Enter your bucket name under **Bucket name**. 
 
-  a. If the settings of your new bucket are similar to the settings of a pre-existing bucket, simply navigate to **Copy settings from existing bucket** and select your bucket-to-copy from there. You may still have to uncheck **Block all public access**, but you are now done.                                                                     
+   1. If the settings of your new bucket are similar to the settings of a pre-existing bucket, simply navigate to **Copy settings from existing bucket** and select your bucket-to-copy from there. You may still have to uncheck **Block all public access**, but you are now done.                                                                     
 ![make_bucket_copy_settings](bucket_creation_1_copy_existing_settings.png)
 
-   b. If you are making a new bucket with settings from scratch, proceed with the following. 
+    2. If you are making a new bucket with settings from scratch, proceed with the following. 
 
 		- Select **US East (N. Virginia) us-east-1** as the region.
 
