@@ -43,15 +43,16 @@ Example: `amplification-sad-amit-march-21-pilot`
 
 4. Enter your bucket name under **Bucket name**. 
 
-   1. If the settings of your new bucket are similar to the settings of a pre-existing bucket, simply navigate to **Copy settings from existing bucket** and select your bucket-to-copy from there. You may still have to uncheck **Block all public access**, but you are now done.                                                                     
+    1. If the settings of your new bucket are similar to the settings of a pre-existing bucket, simply navigate to **Copy settings from existing bucket** and select your bucket-to-copy from there. You may still have to uncheck **Block all public access**, but you are now done.                                                                     
 ![make_bucket_copy_settings](bucket_creation_1_copy_existing_settings.png)
 
     2. If you are making a new bucket with settings from scratch, proceed with the following. 
 
 		- Select **US East (N. Virginia) us-east-1** as the region.
-		- Uncheck the **Block all public access** box. This will prompt a new box to appear, confirming that you want to do this. Check the confirmation box.            
+		- Uncheck the **Block all public access** box. This will prompt a new box to appear, confirming that you want to do this. Check the confirmation box.                          
 		![block_access](block_public_access.PNG)
-		- Enable bucket versioning by selecting **Enable** under **Bucket Versioning**.
+		- Enable bucket versioning by selecting **Enable** under **Bucket Versioning**.                                 
+		![versioning](bucket_versioning.PNG)
 
 5. (if needed) Add tags to help differentiate the task, and what kind of task it is (i.e., survey):
     1. {Key: **lead-name**, Value: *your-name*}
