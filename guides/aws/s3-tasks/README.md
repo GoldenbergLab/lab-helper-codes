@@ -21,33 +21,31 @@ working with permissions to create and edit buckets in S3.
 
 ## Create buckets for task
 
-1. Log into the AWS Console and navigate to S3.
-2. For your new task, you’ll create **3 buckets**. The goal of three buckets is
-to enforce phased development of tasks, as well as to provision data records
-based on the phase (i.e., pilot data should be saved to a folder for only this
-task’s pilot data). The three buckets are listed below (see following step for
-how to create and configure):
+1. Log into the AWS Console and navigate to S3. To do this, you can use the search bar to search for s3.
+![navigation](navigate_s3.png)
 
-    1. `yourtask-yourName-month-year-staging` - you don't need this one if your task is simple, like the amplification/ network tasks that we run
+2. For your new task, you’ll ultimately create **3 buckets**. The goal of three buckets is
+to separate data records based on the phase (and thereby reduce confusion). The three buckets are:
+
+    1. `yourtask-yourName-month-year-staging` 
+	- you don't need this one if your task is simple, like the amplification/ network tasks that we run
+	- this stage is for troubleshooting the page itself (NOT collecting data)
     2. `yourtask-yourName-month-year-pilot`
+	- this stage is for testing the task and running the initial batch of participants
+	- if any issues arise in this stage, make sure to change it before you run the "real" batch
     3. `yourtask-yourName-month-year-production`
+	- this stage is for the actual experiment
 
 Example: `amplification-sad-amit-march-21-pilot`
     
-3. To create a bucket, click the **Create bucket** button in the S3 console.
-You do this for each bucket name as in (2) above. Select **US East (N.
-Virginia) us-east-1** as the region from the drop-down in **General
-configuration**.
-4. You will uncheck the **Block all public access** box. This will allow public
-access to the bucket’s contents (i.e., the task).
-5. Then select **Enable** under **Bucket Versioning**.
-6. (Optional, but recommended) Add two tags to easily designate what phase of
-development a bucket is, and what kind of task it is (i.e., survey):
-    1. {Key: **environment**, Value: *phase*}
-    2. {Key: **task-type**, Value: *type*}
-7. Click **Create bucket** and you will be brought back to the main S3 console.
-8. Your bucket is ready to be populated with the task and related requirements
-(i.e., stimuli).
+3. Now we will make a bucket. Click the **Create bucket.** Select **US East (N. Virginia) us-east-1** as the region from the drop-down in **General configuration**.
+4. Uncheck the **Block all public access** box. This will allow public
+access to the bucket’s contents (i.e., the task website).
+5. Enable bucket versioning by selecting **Enable** under **Bucket Versioning**.
+6. (if needed) Add tags to help differentiate the task, and what kind of task it is (i.e., survey):
+    1. {Key: **lead-name**, Value: *your-name*}
+    2. {Key: **alternate-lead-name**, Value: *another-name*}
+7. Click **Create bucket.** Your bucket is ready to be populated with the task.
 
 ## Uploading your task to S3
 
@@ -66,8 +64,7 @@ example, you may have a structure of files that looks like this:
   └── 3.jpg 
 ```
 
-2. Click the **Upload** button, and you should be able to select all the above
-files from (1) and drag-and-drop into the modal window. IMPORTANT: **if you don't drag and drop, AWS WIll NOT upload your folders. That means any img/, jspsych/, etc will not be in the bucket, resulting in a broken website.**
+2. Click the **Upload** button, and drag-and-drop all of your files into AWS. IMPORTANT: **if you don't drag and drop, AWS WIll NOT upload your folders. That means any img/, jspsych/, etc will not be in the bucket, resulting in a broken website.**
 3. Confirm that the files are correct and click **Upload**.
 
 ## Update bucket to host task
