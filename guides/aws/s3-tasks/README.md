@@ -89,11 +89,9 @@ example, you may have a structure of files that looks like this:
 
 ## Update bucket to host task
 
-1. From the S3 console, click on the bucket name you want to update (i.e.,
-`<your-unique-bucket-name>-staging`), which will bring you to the bucket’s
-configuration dashboard.
-2. Click on **Properties**, and then click edit on the **Static website hosting**
-card. You need to enable Static website hosting.
+1. Navigate to the bucket menu. Click on **Properties**.                                    
+![properties](properties_1.png)
+2. Scroll down to the bottom of properties, where you will find **Static website hosting** Enable it.
 3. It will expand, and you will select **Use this bucket to host a website**.
     1. It will prompt for an **Index document**, which you should call
        `index.html`, or whichever HTML file is the true index of your task. 
