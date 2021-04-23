@@ -39,7 +39,7 @@ to separate data records based on the phase (and thereby reduce confusion). The 
 Example: `amplification-sad-amit-march-21-pilot`
     
 3. Now we will make a bucket. Click the **Create bucket.** 
-![create bucket](create_bucket.PNG)
+![create_bucket](create_bucket.PNG)
 
 4a. Enter your bucket name under **Bucket name**. If the settings of your new bucket are similar to the settings of a pre-existing bucket, simply navigate to **Copy settings from existing bucket** and select your bucket-to-copy from there. You may still have to uncheck **Block all public access**, but you are now done. 
 
