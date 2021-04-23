@@ -45,8 +45,7 @@ Example: `amplification-sad-amit-march-21-pilot`
 
     a. If the settings of your new bucket are similar to the settings of a pre-existing bucket, simply navigate to **Copy settings from existing bucket** and select your bucket-to-copy from there. You may still have to uncheck **Block all public access**, but you are now done.                                                                     
 ![make_bucket_copy_settings](bucket_creation_1_copy_existing_settings.png)
-
-    b. If you are making a new bucket with settings from scratch, proceed with the following: 
+    b. If you are making a new bucket with settings from scratch, proceed with the following. 
 
 		- Select **US East (N. Virginia) us-east-1** as the region.
 
