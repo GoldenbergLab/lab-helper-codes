@@ -83,7 +83,7 @@ example, you may have a structure of files that looks like this:
 
 2. Click the **Upload** button, and drag-and-drop all of your files into AWS. 
    ![upload](upload.PNG)
-    - IMPORTANT: **if you don't drag and drop, AWS WIll NOT upload your folders.** That means any `img/`, `jspsych/`, etc will not be in the bucket, resulting in a broken website.
+    - IMPORTANT: **if you don't drag and drop, AWS WIll NOT upload your folders.** That means any `img/`, `jspsych/`, etc will not be in the bucket, resulting in a broken website.                                                      
     ![drag_drop](drag_drop.PNG)
 3. Confirm that the files are correct and click **Upload**.
 
