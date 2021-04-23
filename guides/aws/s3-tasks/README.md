@@ -31,21 +31,26 @@ to separate data records based on the phase (and thereby reduce confusion). The 
 		- you don't need this one if your task is simple, like the amplification/ network tasks that we run
 		- this stage is for troubleshooting the page itself (NOT collecting data)
     2. `yourtask-yourName-month-year-pilot`
-		- this stage is for testing the task and running the initial batch of participants
-		- if any issues arise in this stage, make sure to change it before you run the "real" batch
+		- this stage is for testing the task and running the initial batch of participants (usually ~20-30 individuals)
+		- if any issues arise in this stage, make sure to change it before you run the "real" production batch
     3. `yourtask-yourName-month-year-production`
 		- this stage is for the actual experiment
 
 Example: `amplification-sad-amit-march-21-pilot`
     
-3. Now we will make a bucket. Click the **Create bucket.** Select **US East (N. Virginia) us-east-1** as the region from the drop-down in **General configuration**.
-4. Uncheck the **Block all public access** box. This will allow public
-access to the bucket’s contents (i.e., the task website).
-5. Enable bucket versioning by selecting **Enable** under **Bucket Versioning**.
-6. (if needed) Add tags to help differentiate the task, and what kind of task it is (i.e., survey):
+3. Now we will make a bucket. Click the **Create bucket.** [create bucket](create_bucket.PNG)
+4a. Enter your bucket name under **Bucket name**. If the settings of your new bucket are similar to the settings of a pre-existing bucket, simply navigate to **Copy settings from existing bucket** and select your bucket-to-copy from there. You may still have to uncheck **Block all public access**, but you are now done. 
+
+4b. If you are making a new bucket with settings from scratch, proceed with the following: 
+	- Select **US East (N. Virginia) us-east-1** as the region from the drop-down in **General configuration**.
+	- Uncheck the **Block all public access** box. This will allow public access to the bucket’s contents (i.e., the task website).
+	- Enable bucket versioning by selecting **Enable** under **Bucket Versioning**.
+
+5. (if needed) Add tags to help differentiate the task, and what kind of task it is (i.e., survey):
     1. {Key: **lead-name**, Value: *your-name*}
     2. {Key: **alternate-lead-name**, Value: *another-name*}
-7. Click **Create bucket.** Your bucket is ready to be populated with the task.
+
+6. Click **Create bucket.** Your bucket is ready to be populated with the task.
 
 ## Uploading your task to S3
 
