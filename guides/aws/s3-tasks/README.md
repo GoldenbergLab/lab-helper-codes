@@ -61,9 +61,10 @@ Example: `amplification-sad-amit-march-21-pilot`
     4. {Key: **yr**, Value: *year*}
     5. {Key: **taskName**, Value: *task-name*}                                                                     
 
-6. Click **Create bucket.** Your bucket is ready to be populated with the task.
+6. Click **Create bucket.** You will return to the bucket menu. 
 
 ## Uploading your task to S3
+
 
 1. On your computer, gather the task materials you will upload to S3. For
 example, you may have a structure of files that looks like this:
@@ -80,7 +81,9 @@ example, you may have a structure of files that looks like this:
   └── 3.jpg 
 ```
 
-2. Click the **Upload** button, and drag-and-drop all of your files into AWS. IMPORTANT: **if you don't drag and drop, AWS WIll NOT upload your folders. That means any img/, jspsych/, etc will not be in the bucket, resulting in a broken website.**
+2. Click the **Upload** button, and drag-and-drop all of your files into AWS. 
+   ![upload](upload.PNG)
+    - IMPORTANT: **if you don't drag and drop, AWS WIll NOT upload your folders.** That means any `img/`, `jspsych/`, etc will not be in the bucket, resulting in a broken website.
 3. Confirm that the files are correct and click **Upload**.
 
 ## Update bucket to host task
