@@ -47,7 +47,6 @@ Example: `amplification-sad-amit-march-21-pilot`
 ![make_bucket_copy_settings](bucket_creation_1_copy_existing_settings.png)
 
     b. If you are making a new bucket with settings from scratch, proceed with the following: 
-    
 		- Select **US East (N. Virginia) us-east-1** as the region from the drop-down in **General configuration**.
 		- Uncheck the **Block all public access** box. This will allow public access to the bucket’s contents (i.e., the task website).
 		- Enable bucket versioning by selecting **Enable** under **Bucket Versioning**.
