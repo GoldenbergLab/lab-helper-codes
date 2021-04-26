@@ -28,7 +28,7 @@ working with permissions to create and edit buckets in S3.
 ## Create buckets for task
 
 1. Log into the AWS Console and navigate to S3. To do this, you can use the search bar to search for s3.
-![navigation](navigate_s3.PNG)
+![navigation](aws_screenshots/navigate_s3.PNG)
 
 2. For your new task, you’ll ultimately create **3 buckets**. The goal of three buckets is
 to separate data records based on the phase (and thereby reduce confusion). The three buckets are:
@@ -45,20 +45,20 @@ to separate data records based on the phase (and thereby reduce confusion). The 
 Example: `amplification-sad-amit-march-21-pilot`
     
 3. Now we will make a bucket. Click the **Create bucket.**                                                                    
-![create_bucket](create_bucket.PNG)
+![create_bucket](aws_screenshots/create_bucket.PNG)
 
 4. Enter your bucket name under **Bucket name**. 
 
     1. If the settings of your new bucket are similar to the settings of a pre-existing bucket, simply navigate to **Copy settings from existing bucket** and select your bucket-to-copy from there. You may still have to uncheck **Block all public access**, but you are now done.                                                                     
-![make_bucket_copy_settings](bucket_creation_1_copy_existing_settings.png)
+![make_bucket_copy_settings](aws_screenshots/bucket_creation_1_copy_existing_settings.png)
 
     2. If you are making a new bucket with settings from scratch, proceed with the following. 
 
 		- Select **US East (N. Virginia) us-east-1** as the region.
 		- Uncheck the **Block all public access** box. This will prompt a new box to appear, confirming that you want to do this. Check the confirmation box.                          
-		![block_access](block_public_access.PNG)
+		![block_access](aws_screenshots/block_public_access.PNG)
 		- Enable bucket versioning by selecting **Enable** under **Bucket Versioning**.                                 
-		![versioning](bucket_versioning.PNG)
+		![versioning](aws_screenshots/bucket_versioning.PNG)
 
 5. Add tags to help differentiate the task:
     1. {Key: **lead-name**, Value: *your-name*}
@@ -88,17 +88,17 @@ example, you may have a structure of files that looks like this:
 ```
 
 2. Click the **Upload** button, and drag-and-drop all of your files into AWS. 
-   ![upload](upload.PNG)
+   ![upload](aws_screenshots/upload.PNG)
     - IMPORTANT: **if you don't drag and drop, AWS WIll NOT upload your folders.** That means any `img/`, `jspsych/`, etc will not be in the bucket, resulting in a broken website.                                                      
-    ![drag_drop](drag_drop.PNG)
+    ![drag_drop](aws_screenshots/drag_drop.PNG)
 3. Confirm that the files are correct and click **Upload**.
 
 ## Update bucket to host task
 
 1. Navigate to the bucket menu. Click on **Properties**.                                    
-![properties](properties_1.png)
+![properties](aws_screenshots/properties_1.png)
 2. Scroll down to the bottom of properties, where you will find **Static website hosting**. Enable it.
-![web_hosting](web_hosting.PNG)
+![web_hosting](aws_screenshots/web_hosting.PNG)
 3. It will expand; select **Use this bucket to host a website**.
     1. It will prompt for an **Index document**. Put the `.html` of your main task file here. 
     2. (Optional, but recommended) Add an `error.html` file that AWS will route
@@ -106,10 +106,10 @@ example, you may have a structure of files that looks like this:
     3. Click **Save**.
 
 4. Now click on **Permissions**.                                                                        
-![permissions](permissions.png)
+![permissions](aws_screenshots/permissions.png)
 
 5. Scroll down mid-way until you reach **Bucket Policy**.                                                                                                     
-![bucket_policy](bucket_policy.PNG)
+![bucket_policy](aws_screenshots/bucket_policy.PNG)
 6. A code block editor should appear, and inside of that, paste the following
 (note that `name-of-bucket` needs to be replaced by the actual name of your
 bucket!) : 
