@@ -30,12 +30,12 @@ working with permissions to create and edit buckets in S3.
 1. Log into the AWS Console and navigate to S3. To do this, you can use the search bar to search for s3.
 ![navigation](aws_screenshots/navigate_s3.PNG)
 
-2. For your new task, you’ll ultimately create **3 buckets**. The goal of three buckets is
+2. For your new task, you’ll ultimately create **2 or 3 buckets**. The goal of three buckets is
 to separate data records based on the phase (and thereby reduce confusion). The three buckets are:
 
-    1. `yourtask-yourName-month-year-staging` 
-		- you don't need this one if your task is simple, like the amplification/ network tasks that we run
+    1. `yourtask-yourName-month-year-staging` (optional unless otherwise specified)
 		- this stage is for troubleshooting the page itself (NOT collecting data)
+		- you don't need this one if your task is simple, like the amplification or sequential tasks that we run
     2. `yourtask-yourName-month-year-pilot`
 		- this stage is for testing the task and running the initial batch of participants (usually ~20-30 individuals)
 		- if any issues arise in this stage, make sure to change it before you run the "real" production batch
