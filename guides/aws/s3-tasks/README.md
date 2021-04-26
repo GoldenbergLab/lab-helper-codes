@@ -18,7 +18,7 @@
 
 In this guide, we discuss how to create, configure, and upload content to an AWS bucket to host your task website. Imagine a bucket as a sophisticated GitHub or Google Drive folder that gives you the ability to host a website an save data from that website. 
 
-You can find out more about buckets in general on AWS's [guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/GetStartedWithS3.html). 
+You can find out more about buckets in general on AWS's [documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/GetStartedWithS3.html). 
 
 ## Step 0
 
