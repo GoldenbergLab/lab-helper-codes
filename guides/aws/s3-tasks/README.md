@@ -227,10 +227,9 @@ structures should use a generic function that _contains_ the `saveDataToS3` func
 
 ## Configuring a CloudFront deployment
 
-Now, you must create a CloudFront distribution for the S3 bucket, which will deploy
-the bucket's contents and publish the task.
+Now, you must create a CloudFront distribution for the S3 bucket. This will allow us to publish the task securely under the `hbssurvey.com` domain name. 
 
-1. Navigate to the CloudFront service from the AWS Console.
+1. Navigate to the CloudFront service. You can do this by typing "CloudFront" into the search bar.
 2. Click **Create Distribution** and then press **Get Started** under the "Web"
    method of content delivery.
 3. Paste the endpoint (web address) of your task's S3 bucket in the field called **Origin Domain Name**.
@@ -243,10 +242,8 @@ the bucket's contents and publish the task.
    from the dropdown `*.hbssurvey.com (a715bbbd-ad62-49a0-8c75-9fdb9d542633)`
 9. Submit by choosing **Create Distribution** again.
 
-Once these steps are completing, AWS will begin deploying the task. It can take up to a few
-hours to finish deploying depending on how busy AWS's deployment queue is. Typically, however,
-it should be less than ten minutes. Once ready, you'll be able to navigate to your deployed
-task website.
+Once these steps are completing, AWS will begin deploying the task. Typically, the wait should be less than ten minutes (in extreme cases it can take a few hours). 
+Once ready, you'll be able to navigate to your deployed task website.
 
 This website will soon be customized for our lab (see point 7. above), but for now, you will
 find the task at a domain of type: `*.cloudfront.net`.
