@@ -14,9 +14,13 @@
 
 <!-- tocstop -->
 
+## Overview
+
+In this guide, we discuss how to create, configure, and upload content to an AWS bucket to host your task website. Imagine a bucket as a sophisticated GitHub or Google Drive folder that gives you the ability to host a website an save data from that website. 
+
 ## Step 0
 
-Make sure AWS is configured, which means your IAM user account is valid and
+Make sure AWS is configured, which means your account is valid and
 working with permissions to create and edit buckets in S3.
 
 ## Create buckets for task
