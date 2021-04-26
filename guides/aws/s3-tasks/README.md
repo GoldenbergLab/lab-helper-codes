@@ -91,10 +91,9 @@ example, you may have a structure of files that looks like this:
 
 1. Navigate to the bucket menu. Click on **Properties**.                                    
 ![properties](properties_1.png)
-2. Scroll down to the bottom of properties, where you will find **Static website hosting** Enable it.
-3. It will expand, and you will select **Use this bucket to host a website**.
-    1. It will prompt for an **Index document**, which you should call
-       `index.html`, or whichever HTML file is the true index of your task. 
+2. Scroll down to the bottom of properties, where you will find **Static website hosting**. Enable it.
+3. It will expand; select **Use this bucket to host a website**.
+    1. It will prompt for an **Index document**. Put the `.html` of your main task file here. 
     2. (Optional, but recommended) Add an `error.html` file that AWS will route
        to in case of errors in server-side logic that happen from time to time.
     3. Click **Save**.
