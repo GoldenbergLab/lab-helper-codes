@@ -104,6 +104,7 @@ example, you may have a structure of files that looks like this:
     2. (Optional, but recommended) Add an `error.html` file that AWS will route
        to in case of errors in server-side logic that happen from time to time.
     3. Click **Save**.
+    4. The URL of the non-secure website of the task will pop up. You will need this URL later when you set it up to redirect to the secure version of the site
 
 4. Now click on **Permissions**.                                                                        
 ![permissions](aws_screenshots/permissions.png)
@@ -230,30 +231,28 @@ structures should use a generic function that _contains_ the `saveDataToS3` func
 Now, you must create a CloudFront distribution for the S3 bucket. This will allow us to publish the task securely under the `hbssurvey.com` domain name. 
 
 1. Navigate to the CloudFront service. You can do this by typing "CloudFront" into the search bar.
-2. Click **Create Distribution** and then press **Get Started** under the "Web"
-   method of content delivery.                                         
+2. Click **Create Distribution**.                                         
 ![create_distr](aws_screenshots/create_distr.PNG)
-3. Paste the endpoint (web address) of your task's S3 bucket in the field called **Origin Domain Name**.
-4. Where it asks for **Viewer Protocol Policy**, select **Redirect HTTP to HTTPS**.
-5. For the dropdown selector called **Cache Policy**, select **Managed-CachingDisabled**.
-6. For the option **Compress Objects Automatically**, select **Yes**.
-7. You must make an **Alternate Domain Name (CNAME)** to link it to our lab's study web domain. To do so,
+3. Press **Get Started** under the "Web" method of content delivery.                                                  
+![get_started](aws_screenshots/web_get_started.PNG)
+4. Paste the web address of your task's S3 bucket in the field called **Origin Domain Name**. You can find this web address in the bucket page under "Properties" and then "Static Web Hosting."
+5. Where it asks for **Viewer Protocol Policy**, select **Redirect HTTP to HTTPS**.
+6. For the dropdown selector called **Cache Policy**, select **Managed-CachingDisabled**.
+7. For the option **Compress Objects Automatically**, select **Yes**.
+8. You must make an **Alternate Domain Name (CNAME)** to link it to our lab's study web domain. To do so,
    you will include text describing your task, such as `example-task-name-and-phase.hbssurvey.com`.
-8. For **SSL Certificate**, select **Custom SSL Certificate (example.com)**. Then select
+9. For **SSL Certificate**, select **Custom SSL Certificate (example.com)**. Then select
    from the dropdown `*.hbssurvey.com (a715bbbd-ad62-49a0-8c75-9fdb9d542633)`
-9. Submit by choosing **Create Distribution** again.
+10. Submit by choosing **Create Distribution** again.
 
 Once these steps are completing, AWS will begin deploying the task. Typically, the wait should be less than ten minutes (in extreme cases it can take a few hours). 
 Once ready, you'll be able to navigate to your deployed task website.
-
-This website will soon be customized for our lab (see point 7. above), but for now, you will
-find the task at a domain of type: `*.cloudfront.net`.
 
 ## Configuring task web domain on Route 53
 
 With a CloudFront deployment of a task, the final step to making it ready for participants
 is to create a subdomain on our lab's study domain (e.g., `new-task-name-and-phase.hbssurvey.com`).
-You will need your CloudFront deployment's URL to complete this step. The URL will look similar to
+You will need your CloudFront deployment's URL to complete this step. You can find the CloudFront URL on the CloudFront home page. The URL will look similar to
 `dbmsd35c91.cloudfront.net`.
 
 
