@@ -27,7 +27,7 @@ Download your AWS data, and make sure it is correct. Then check your Qualtrics s
 
 ## Step 4 - Run
 
-
+Start the task in Prolific, MTurk or the service you are using.
 
 ## Step 5 - Downloading task data
 
