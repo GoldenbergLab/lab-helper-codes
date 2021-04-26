@@ -105,10 +105,10 @@ example, you may have a structure of files that looks like this:
        to in case of errors in server-side logic that happen from time to time.
     3. Click **Save**.
 
-4. Now click on **Permissions**.
+4. Now click on **Permissions**.                                                                        
 ![permissions](permissions.png)
 
-5. Scroll down mid-way until you reach **Bucket Policy**.
+5. Scroll down mid-way until you reach **Bucket Policy**.                                                                                                     
 ![bucket_policy](bucket_policy.PNG)
 6. A code block editor should appear, and inside of that, paste the following
 (note that `name-of-bucket` needs to be replaced by the actual name of your
@@ -137,25 +137,19 @@ bucket!) :
 
 ## Syncing your task to its `task-data-raw` folder
 
-Our S3 service has a variety of buckets, but the bucket we save data to will be
-the same bucket for all tasks. It's named `task-data-raw`. The only change will
-be which _folder_ of the bucket, where that folder will have the same name as
-the bucket of the task. So if the task is called
-`fun-new-task-with-a-twist-production`, we save data to a folder located
-within-bucket: `task-data-raw/fun-new-task-with-a-twist-production`.
+We save to a bucket called `task-data-raw`. So, if the task is called
+`potato-production`, we save data to a folder located
+within-bucket: `task-data-raw/potato-production`.
 
 To save data from a task, whether it is in staging, pilot, or production, you
-must use the [AWS Browser SDK](https://aws.amazon.com/sdk-for-browser/). In
-particular, we need this SDK to link to both Cognito and S3 from the task.
-There are two ways to use the SDK. The most common way this lab will import the
-script is through a direct script link in the main HTML file:
+must use the [AWS Browser SDK](https://aws.amazon.com/sdk-for-browser/).
+There are two ways to use the SDK. The most common way is through a direct script link in the main HTML file:
 
 ``` 
 <script src="https://sdk.amazonaws.com/js/aws-sdk-2.713.0.min.js"></script>
 ```
 
-The following JavaScript code block can be configured within another script for
-any browser-based task:
+Next, add the saveDataToS3() javascript function to your task as well:
 
 ``` 
 
@@ -210,14 +204,14 @@ function saveDataToS3(id, csv) {
 }
 ```
 
-You will then reference this saving function within `on_finish` tags within
-your jsPsych timeline when you would like to write data to S3. Remember to pass
+You will then reference this saving function within `on_finish` or `on_start` tags within
+your jsPsych timeline when you would like to save data to S3. Remember to pass
 in a participant identifier and the data to be saved in CSV format. This will 
 look like:
 
 ```
 ...,
-on_finish: function() {
+on_finish: function() { 
 
   const id = "<whatever-the-subject-id-is>"
   const csv = jsPsych.data.get().csv()
@@ -228,7 +222,7 @@ on_finish: function() {
 ...
 ```
 
-It's _very_ important that you follow this pattern. The `on_finish` piece of jsPsych
+It's _very_ important that you follow this pattern. The `on_finish` or `on_start` piece of jsPsych
 structures should use a generic function that _contains_ the `saveDataToS3` function.
 
 ## Configuring a CloudFront deployment
