@@ -223,7 +223,7 @@ on_finish: function() {
 ```
 
 It's _very_ important that you follow this pattern. The `on_finish` or `on_start` piece of jsPsych
-structures should use a generic function that _contains_ the `saveDataToS3` function.
+structures should use a generic function that _contains_ the `saveDataToS3` function. Do not directly call this function outside of these tags unless you understand what you are doing. 
 
 ## Configuring a CloudFront deployment
 
@@ -278,11 +278,11 @@ You will need your CloudFront deployment's URL to complete this step. The URL wi
 
 ## Specific task variations
 
-### Sequential Tasks
+### Calling the `SaveDataToS3` function without passing in arguments (for Sequential and Amplification Tasks)
 
-1. Make sure function saveDataToS3 is in the functions.js file and not the main html file.
+1. Make sure function `saveDataToS3` is in the `functions.js` file and not the main HTML file.
 
-2. Modify the function so that id refers to the global Face.ID variable and so that the function can be called without passing in arguments.
+2. Modify the function so that `id` refers to the global `Face.ID` variable. Now `saveDataToS3` can be called without passing in arguments.
 
 ```
 function saveDataToS3() {
@@ -321,7 +321,7 @@ function saveDataToS3() {
 
 } 
 ```
-3. Modify the following variables to contain the saveDataToS3 function. Not that sometimes the function fails to work with on_finish and instead we use on_start.
+3. Modify the following variables to contain the `saveDataToS3` function. Not that sometimes the function fails to work with `on_finish` and instead we use `on_start`.
 
 ``` 
 var imageDescription = {
