@@ -98,13 +98,19 @@ example, you may have a structure of files that looks like this:
 1. Navigate to the bucket menu. Click on **Properties**.                                    
 ![properties](properties_1.png)
 2. Scroll down to the bottom of properties, where you will find **Static website hosting**. Enable it.
+![web_hosting](web_hosting.PNG)
 3. It will expand; select **Use this bucket to host a website**.
     1. It will prompt for an **Index document**. Put the `.html` of your main task file here. 
     2. (Optional, but recommended) Add an `error.html` file that AWS will route
        to in case of errors in server-side logic that happen from time to time.
     3. Click **Save**.
-4. Now click on **Permissions** and then **Bucket Policy**.
-5. A code block editor should appear, and inside of that, paste the following
+
+4. Now click on **Permissions**.
+![permissions](permissions.png)
+
+5. Scroll down mid-way until you reach **Bucket Policy**.
+![bucket_policy](bucket_policy.PNG)
+6. A code block editor should appear, and inside of that, paste the following
 (note that `name-of-bucket` needs to be replaced by the actual name of your
 bucket!) : 
 
@@ -126,8 +132,8 @@ bucket!) :
 } 
 ```
 
-6. Click **Save** and follow the prompt to confirm that this should be public.
-7. Your bucket is ready to configure with CloudFront.
+7. Click **Save** and follow the prompt to confirm that this should be public.
+8. Your bucket is ready to configure with CloudFront.
 
 ## Syncing your task to its `task-data-raw` folder
 
