@@ -257,7 +257,7 @@ You will need your CloudFront deployment's URL to complete this step. You can fi
 `dbmsd35c91.cloudfront.net`.
 
 
-1. Navigate to the Route 53 service from the AWS Console.
+1. Navigate to the Route 53 service by searching for "Route 53".
 2. Click **Hosted zones**, and then click the **hbssurvey.com** domain link in the table.
 3. A list in a table called "Records" will appear. Click **Create record**.
 4. When prompted to "Choose routing policy", select **Simple routing** and click **Next**.
