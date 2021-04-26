@@ -31,4 +31,4 @@ Start the task in Prolific, MTurk or the service you are using.
 
 ## Step 5 - Downloading task data
 
-Outline: You can only download one file at a time on S3 console. So you need to install the AWS client or a File Transfer software such as (CyberDuck)[https://cyberduck.io/] in order to effectively download more
+Outline: You can only download one file at a time on S3 console. So you need to install the AWS client or a File Transfer software such as [CyberDuck](https://cyberduck.io/) in order to effectively download more
