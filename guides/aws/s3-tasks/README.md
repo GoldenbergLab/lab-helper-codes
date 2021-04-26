@@ -353,7 +353,7 @@ var attentionCheck = { //function for the attention check
   };
   ```
 
-4. Final notes of modifications: make new distinction between EU and US consent, get rid of references to checkUser function (temporarily until we construct a new one), change the order of items pushed into collective_emotion_estimation
+4. Final notes of modifications: make new distinction between EU and US consent, get rid of references to `checkUser` function (temporarily until we construct a new one), change the order of items pushed into `collective_emotion_estimation` timeline
 
 ```
 var participant_id = { //to check if participants have entered ID (number/character, no punctuation allowed)
