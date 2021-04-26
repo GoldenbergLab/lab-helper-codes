@@ -235,7 +235,7 @@ Now, you must create a CloudFront distribution for the S3 bucket. This will allo
 ![create_distr](aws_screenshots/create_distr.PNG)
 3. Press **Get Started** under the "Web" method of content delivery.                                                  
 ![get_started](aws_screenshots/web_get_started.PNG)
-4. Paste the web address of your task's S3 bucket in the field called **Origin Domain Name**. You can find this web address in the bucket page under "Properties" and then "Static Web Hosting."
+4. Paste the web address of your task's S3 bucket in the field called **Origin Domain Name**. You can find this web address in the bucket page under "Properties" and then "Static Web Hosting."                                                                                                        
 ![non_secure_site_address](aws_screenshots/non_secure_site.PNG)
 5. Where it asks for **Viewer Protocol Policy**, select **Redirect HTTP to HTTPS**.
 6. For the dropdown selector called **Cache Policy**, select **Managed-CachingDisabled**.
