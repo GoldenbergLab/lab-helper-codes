@@ -242,6 +242,9 @@ Now, you must create a CloudFront distribution for the S3 bucket. This will allo
 7. For the option **Compress Objects Automatically**, select **Yes**.
 8. You must make an **Alternate Domain Name (CNAME)** to link it to our lab's study web domain. To do so,
    you will include text describing your task, such as `example-task-name-and-phase.hbssurvey.com`.
+    - This is the web address that participants will see when they access the task.
+    - If you bucket name is `amplification-sad-amit-march-21-pilot`, a good web address name is `amplification-s-pilot.hbssurvey.com`
+    - Be mindful of the names you select and try not to "spoil" participation. For example, a task called `amplification-race-pilot` was changed to `amplification-r-pilot.hbssurvey.com` because we did not want to spoil participants on the fact that this task contained elements related to race. 
 9. For **SSL Certificate**, select **Custom SSL Certificate (example.com)**. Then select
    from the dropdown `*.hbssurvey.com (a715bbbd-ad62-49a0-8c75-9fdb9d542633)`
 10. Submit by choosing **Create Distribution** again.
