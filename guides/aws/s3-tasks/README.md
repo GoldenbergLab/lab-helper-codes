@@ -265,17 +265,18 @@ You will need your CloudFront deployment's URL to complete this step. You can fi
 ![hosted_zone](aws_screenshots/route53.PNG)
 3. Then click the **hbssurvey.com** domain link in the table.                                                    
 ![hbssurvey](aws_screenshots/hbssurvey_hosted_zone.PNG)
-3. A list in a table called "Records" will appear. Click **Create record**.
-4. When prompted to "Choose routing policy", select **Simple routing** and click **Next**.
-5. Configure **two** separate records, *A* and *AAAA*. Do the following to create each:
-   - Click **Define simple record**.
+3. A list in a table called "Records" will appear. Click **Create record**.                                                          
+![create_record](aws_screenshots/create_record.PNG) 
+4. Make sure that "Record Type" is "A" and "Routing policy" is **Simple routing**.                                                                   
+![record_type](aws_screenshots/record_type_routing_policy.PNG)                           
+5. Do the following for the rest of the record:
    - For "Record name", write the subdomain for the task and phase. This should _match exactly_ the
-     name you give to the CloudFront distribution `new-task-name-and-phase`.
+     name you give to the CloudFront distribution. So, if your CloudFront distribution URL was `amplification-s-pilot.hbssurvey.com`, then enter the same URL into this box.
    - For "Value/Route traffic to", select "Alias to CloudFront distribution". It should automatically
      fill in "US East (N. Virginia)" for the region. Then, "Choose distribution" will provide in a dropdown
      the names of CloudFront distributions that are equipped for the _exact name_ used as a CNAME in the previous
      set of steps. The distribution you should match the CloudFront URL (i.e., `dbmsd35c91.cloudfront.net`).
-   - Select for "Record type" either **A** or **AAAA**, or whichever of these two you have not yet done.
+   - Create a new record following the same steps, changing "Record type" to "AAAA" this time. 
 6. Finally, click **Create records**.
 
 
