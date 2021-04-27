@@ -270,14 +270,18 @@ You will need your CloudFront deployment's URL to complete this step. You can fi
 4. Make sure that "Record Type" is "A" and "Routing policy" is **Simple routing**.                                                                   
 ![record_type](aws_screenshots/record_type_routing_policy.PNG)                           
 5. Do the following for the rest of the record:
-   - For "Record name", write the subdomain for the task and phase. This should _match exactly_ the
-     name you give to the CloudFront distribution. So, if your CloudFront distribution URL was `amplification-s-pilot.hbssurvey.com`, then enter the same URL into this box.
+   - For "Record name", write the `hbssurvey.com` URL you gave to the task during the CloudFront phase. This should _match exactly_ the
+     name you give to the CloudFront distribution. So, if your CloudFront distribution URL was `amplification-s-pilot.hbssurvey.com`, then `amplification-s-pilot` into the textbox.
    - For "Value/Route traffic to", select "Alias to CloudFront distribution". It should automatically
      fill in "US East (N. Virginia)" for the region. Then, "Choose distribution" will provide in a dropdown
      the names of CloudFront distributions that are equipped for the _exact name_ used as a CNAME in the previous
      set of steps. The distribution you should match the CloudFront URL (i.e., `dbmsd35c91.cloudfront.net`).
    - Create a new record following the same steps, changing "Record type" to "AAAA" this time. 
-6. Finally, click **Create records**.
+6. When you have two records, one of type A and one of type AAAA, click **Create records**.
+
+## Congratulations! You're done! 
+
+Now you will find your task at the `hbssurvey.com` address that you configured for it. Proceed to this [tutorial](runnings3.md) to learn how to prepare your task to go live on the web!
 
 
 
