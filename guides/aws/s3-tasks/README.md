@@ -278,7 +278,7 @@ You will need your CloudFront deployment's URL to complete this step. You can fi
      the names of CloudFront distributions that are equipped for the _exact name_ used as a CNAME in the previous
      set of steps. The distribution you should match the CloudFront URL (i.e., `dbmsd35c91.cloudfront.net`).
    - Create a new record following the same steps, changing "Record type" to "AAAA" this time.                                                                 
-   ![record_alias](record_alias.PNG)
+   ![record_alias](aws_screenshots/record_alias.PNG)
 6. When you have two records, one of type A and one of type AAAA, click **Create records**.
 
 ## What next?
