@@ -9,6 +9,7 @@
 - [Syncing your task to its `task-data-raw` folder](#syncing-your-task-to-its-task-data-raw-folder)
 - [Configuring a CloudFront deployment](#configuring-a-cloudfront-deployment)
 - [Configuring task web domain on Route 53](#configuring-task-web-domain-on-route-53)
+- [What next?](#what-next)
 - [Specific task variations](#specific-task-variations)
   * [Sequential Tasks](#sequential-tasks)
 
@@ -279,7 +280,9 @@ You will need your CloudFront deployment's URL to complete this step. You can fi
    - Create a new record following the same steps, changing "Record type" to "AAAA" this time. 
 6. When you have two records, one of type A and one of type AAAA, click **Create records**.
 
-## Congratulations! You're done! 
+## What next?
+
+Congratulations! You're done! 
 
 Now you will find your task at the `hbssurvey.com` address that you configured for it. Proceed to this [tutorial](runnings3.md) to learn how to prepare your task to go live on the web!
 
