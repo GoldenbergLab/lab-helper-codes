@@ -1,9 +1,13 @@
 # Guide to running a task on AWS
 
+## Summary
+
 - Step 0: Make sure you have deployed the task. Is your-task-here.hbssurvey.com up and running? 
 - Step 1: Check [AWS status](https://status.aws.amazon.com/). 
 - Step 2: Eliminate common human errors
 - Step 3: Go through the task once
+- Step 4: Run
+- Step 5: Download data
 
 
 ## Step 0 - make sure you have deployed the task.
@@ -32,4 +36,6 @@ Start the task in Prolific, MTurk or the service you are using.
 
 ## Step 5 - Downloading task data
 
-Outline: You can only download one file at a time on S3 console. So you need to install the AWS client or a File Transfer software such as [CyberDuck](https://cyberduck.io/) in order to effectively download more
+Outline: You can only download one file at a time on S3 console. So you need to install the AWS client and use the command line or install a File Transfer software such as [CyberDuck](https://cyberduck.io/) in order to download more data at once.
+
+### Cyberduck tutorial
