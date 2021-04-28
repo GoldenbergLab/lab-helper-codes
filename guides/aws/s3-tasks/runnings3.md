@@ -4,13 +4,13 @@ Summary
 
 <!-- toc -->
 
-- [Step 0: Make sure you have deployed the task](#step-0)
-- [Step 1: Check AWS Status](#check-aws)
-- [Step 2: Eliminate common human errors](#eliminate-human-errors)
+- [Step 0: Make sure you have deployed the task](#step-0---make-sure-you-have-deployed-the-task)
+- [Step 1: Check AWS Status](#step-2---eliminate-common-human-errors)
+- [Step 2: Eliminate common human errors](#step-3---go-through-the-task-once)
 - [Step 3: Go through the task once](#do-task-once)
-- [Step 4: Run](#run)
-- [Step 5: Download data](#download-data)
-    * [Cyberduck tutorial](#cyberduck)
+- [Step 4: Run](#step-4---run)
+- [Step 5: Download data](#step-5---downloading-task-data)
+    * [Cyberduck tutorial](#cyberduck-tutorial)
 
 <!-- tocstop -->
 
