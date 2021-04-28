@@ -1,13 +1,18 @@
 # Guide to running a task on AWS
 
-## Summary
+Summary
 
-- Step 0: Make sure you have deployed the task. Is your-task-here.hbssurvey.com up and running? 
-- Step 1: Check [AWS status](https://status.aws.amazon.com/). 
-- Step 2: Eliminate common human errors
-- Step 3: Go through the task once
-- Step 4: Run
-- Step 5: Download data
+<!-- toc -->
+
+- [Step 0: Make sure you have deployed the task. Is `your-task-here.hbssurvey.com` up and running?(#step-0)
+- [Step 1: Check [AWS status](https://status.aws.amazon.com/)](#check-aws)
+- [Step 2: Eliminate common human errors](#eliminate-human-errors)
+- [Step 3: Go through the task once](#do-task-once)
+- [Step 4: Run](#run)
+- [Step 5: Download data](#download-data)
+    * [Cyberduck tutorial](#cyberduck)
+
+<!-- tocstop -->
 
 
 ## Step 0 - make sure you have deployed the task.
