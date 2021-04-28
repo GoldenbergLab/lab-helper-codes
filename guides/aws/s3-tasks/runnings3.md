@@ -4,7 +4,7 @@ Summary
 
 <!-- toc -->
 
-- [Step 0: Make sure you have deployed the task. Is `your-task-here.hbssurvey.com` up and running?(#step-0)
+- [Step 0: Make sure you have deployed the task](#step-0)
 - [Step 1: Check [AWS status](https://status.aws.amazon.com/)](#check-aws)
 - [Step 2: Eliminate common human errors](#eliminate-human-errors)
 - [Step 3: Go through the task once](#do-task-once)
