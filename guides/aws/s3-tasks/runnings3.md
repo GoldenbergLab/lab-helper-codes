@@ -53,6 +53,7 @@ Outline: You can only download one file at a time on S3 console. So you need to 
     - Click on your own username
     - Go to the "Security credentials" tab
     - Create a new access key
+
 3. In Cyberduck, open a new connection. Select AmazonS3.
 4. Enter your access credentials. 
 5. Congratulations! You can now transfer files between your computer and S3 via the CyberDuck interface.
