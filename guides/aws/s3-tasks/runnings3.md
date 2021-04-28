@@ -13,17 +13,18 @@ Follow the guide to deploying s3 tasks here. Once you are finished, you should h
 Make sure that "Amazon Cognito (N. Virginia)" is not experiencing errors. Double check to make sure that the save function is working and uploading data into the `task-data-raw` bucket. 
 
 ## Step 2 - Eliminate common human errors:
-Common errors:
 
   - linked wrong Qualtrics
-  - instructions are wrong
-  - consent is wrong
+  - instructions are wrong / inaccurate
+  - consent is wrong / inaccurate
   - functions do not work as intended. For example, a function to ensure that participants only enter numerical responses might also let participants enter no response without triggering an alert.
   
 ## Step 3 - Go through the task once
 Go through your entire task once. Make mistakes and ensure that your checker functions (such as response length, attention checks, etc) are working properly.
 
-Download your AWS data, and make sure it is correct. Then check your Qualtrics survey.
+Download your AWS data, and make sure it is correct. A correct AWS data has recorded all of the stimuli (and not skipped any trials).
+
+Then check your Qualtrics survey and make sure that your data was recorded.
 
 ## Step 4 - Run
 
