@@ -31,16 +31,13 @@ working with permissions to create and edit buckets in S3.
 1. Log into the AWS Console and navigate to S3. To do this, you can use the search bar to search for s3.
 ![navigation](aws_screenshots/navigate_s3.PNG)
 
-2. For your new task, you’ll ultimately create **2 or 3 buckets**. The goal of three buckets is
+2. For your new task, you’ll ultimately create **2 buckets**. The goal of three buckets is
 to separate data records based on the phase (and thereby reduce confusion). The three buckets are:
 
-    1. `yourtask-yourName-month-year-staging` (optional unless otherwise specified)
-		- this stage is for troubleshooting the page itself (NOT collecting data)
-		- you don't need this one if your task is simple, like the amplification or sequential tasks that we run
-    2. `yourtask-yourName-month-year-pilot`
+    1. `yourtask-yourName-month-year-pilot`
 		- this stage is for testing the task and running the initial batch of participants (usually ~20-30 individuals)
-		- if any issues arise in this stage, make sure to change it before you run the "real" production batch
-    3. `yourtask-yourName-month-year-production`
+		- if any issues arise in this stage, make sure to change it before you run the "real" batch
+    2. `yourtask-yourName-month-year`
 		- this stage is for the actual experiment
 
 Example: `amplification-sad-amit-march-21-pilot`
@@ -140,10 +137,10 @@ bucket!) :
 ## Syncing your task to its `task-data-raw` folder
 
 We save to a bucket called `task-data-raw`. So, if the task is called
-`potato-production`, we save data to a folder located
-within-bucket: `task-data-raw/potato-production`.
+`potato`, we save data to a folder located
+within-bucket: `task-data-raw/potato`.
 
-To save data from a task, whether it is in staging, pilot, or production, you
+To save data from a task, whether it is in pilot, or the actual task, you
 must use the [AWS Browser SDK](https://aws.amazon.com/sdk-for-browser/).
 There are two ways to use the SDK. The most common way is through a direct script link in the main HTML file:
 
