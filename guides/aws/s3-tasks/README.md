@@ -19,14 +19,13 @@
 
 In this guide, we discuss how to create, configure, and upload content to an AWS bucket to host your task website. 
 
-Imagine a bucket as a sophisticated GitHub or Google Drive folder that gives you the ability to host a website and save data from that website. This tutorial should take 30-45min the first time, but with practice you can finish the whole sequence in less than 10 min.
+Imagine a **bucket** as a sophisticated GitHub or Google Drive folder that gives you the ability to host an experiment website and save data from that experiment. This tutorial should take 30-45min the first time, but with practice you can finish the whole sequence in less than 10 min.
 
 You can find out more about buckets in general on AWS's [documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/GetStartedWithS3.html). 
 
 ## Step 0
 
-Make sure AWS is configured, which means your account is valid and
-working with permissions to create and edit buckets in S3.
+Make sure AWS is configured, which means your account is working with permissions to create and edit buckets in S3.
 
 ## Create buckets for task
 
