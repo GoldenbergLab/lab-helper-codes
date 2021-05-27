@@ -33,22 +33,23 @@ Make sure AWS is configured, which means your account is working with permission
 ![navigation](aws_screenshots/navigate_s3.PNG)
 
 2. For your new task, you’ll ultimately create **2 buckets**. The goal of 2 buckets is
-to separate data records based on the phase (and thereby reduce confusion). The 2 buckets are:
+to separate data records based on the experiment phase (and reduce confusion). The 2 buckets are:
 
     1. `yourtask-yourName-month-year-pilot`
-		- this stage is for testing the task and running the initial batch of participants (usually ~20-30 individuals)
-		- if any issues arise in this stage, make sure to change it before you run the "real" batch
-    2. `yourtask-yourName-month-year`
-		- this stage is for the actual experiment
+		- this stage is for testing the task and running the initial batch of participants (~20-30 individuals)
+		- if any issues arise in this stage, make sure to change it before you run the "real" experiment
 
-Example: `amplification-sad-amit-march-21-pilot`
+    2. `yourtask-yourName-month-year`
+		- this stage is for the real experiment
+
+Example: pilot - `amplification-sad-amit-march-21-pilot`; "real" experiment = `amplification-sad-amit-march-21`
     
 3. Now we will make a bucket. Click the **Create bucket.**                                                                    
 ![create_bucket](aws_screenshots/create_bucket.PNG)
 
 4. Enter your bucket name under **Bucket name**. 
 
-    1. If the settings of your new bucket are similar to the settings of a pre-existing bucket, simply navigate to **Copy settings from existing bucket** and select your bucket-to-copy from there. You may still have to uncheck **Block all public access**, but you are now done.                                                                     
+    1. If your new bucket's settings are similar to a pre-existing bucket's settings, simply navigate to **Copy settings from existing bucket** and select your bucket-to-copy from there. You may still have to uncheck **Block all public access**, but you are now done with this step.                                                                     
 ![make_bucket_copy_settings](aws_screenshots/bucket_creation_1_copy_existing_settings.png)
 
     2. If you are making a new bucket with settings from scratch, proceed with the following. 
