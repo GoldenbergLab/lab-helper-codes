@@ -31,8 +31,8 @@ working with permissions to create and edit buckets in S3.
 1. Log into the AWS Console and navigate to S3. To do this, you can use the search bar to search for s3.
 ![navigation](aws_screenshots/navigate_s3.PNG)
 
-2. For your new task, you’ll ultimately create **2 buckets**. The goal of three buckets is
-to separate data records based on the phase (and thereby reduce confusion). The three buckets are:
+2. For your new task, you’ll ultimately create **2 buckets**. The goal of 2 buckets is
+to separate data records based on the phase (and thereby reduce confusion). The 2 buckets are:
 
     1. `yourtask-yourName-month-year-pilot`
 		- this stage is for testing the task and running the initial batch of participants (usually ~20-30 individuals)
