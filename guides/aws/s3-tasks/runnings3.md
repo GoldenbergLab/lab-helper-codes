@@ -10,7 +10,7 @@ Summary
 - [Step 3: Go through the task once](#step-3---go-through-the-task-once)
 - [Step 4: Run](#step-4---run)
 
-For downloading data go to **[download](lab_helper_codes/guides/aws/s3-tasks/download.md)**
+For downloading data go to **[download](guides/aws/s3-tasks/download.md)**
 <!-- tocstop -->
 
 
