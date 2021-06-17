@@ -1,19 +1,17 @@
-# Guide to running a task on AWS
+# Guide to Downloading Data from AWS
 
-Summary
+
+There are few options to downloading:
+You can only download one file at a time on S3 console. So you need to install the AWS client and use the command line or install a File Transfer software such as [CyberDuck](https://cyberduck.io/) in order to download more data at once.
 
 <!-- toc -->
-- [Download data with cyberduck](#step-5---downloading-with-cyberduck)
-    * [Cyberduck tutorial](#cyberduck-tutorial)
+- You can only download **one file at a time on S3 console.** This is done by manually clicking the download function on the aws file
+- **no terminal option** You can download multiple files with **[cyberduck](#downloading-with-cyberduck)**
+- **download from terminal** you can use the aws command line **[interfece](#Command-line-interface)**
 
 <!-- tocstop -->
 
-
-## Step 5 - Downloading with Cyberduck
-
-Outline: You can only download one file at a time on S3 console. So you need to install the AWS client and use the command line or install a File Transfer software such as [CyberDuck](https://cyberduck.io/) in order to download more data at once.
-
-### Cyberduck tutorial
+##Downloading with Cyberduck
 
 1. Download the version of [CyberDuck](https://cyberduck.io/) appropriate for your browser.
 2. Make sure that you have an AWS access key. If you are unable to follow the steps below, feel free to contact Zi and she will make you one:
@@ -27,3 +25,10 @@ Outline: You can only download one file at a time on S3 console. So you need to 
 3. In Cyberduck, open a new connection. Select AmazonS3.
 4. Enter your access credentials.
 5. Congratulations! You can now transfer files between your computer and S3 via the CyberDuck interface.
+
+
+## Command Line Interface
+
+### Installation
+
+- [MacOS](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-mac.html)
