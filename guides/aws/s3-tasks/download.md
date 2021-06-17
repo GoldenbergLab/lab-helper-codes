@@ -9,6 +9,9 @@ You can only download one file at a time on S3 console. So you need to install t
 - **no terminal option** You can download multiple files with **[cyberduck](#downloading-with-cyberduck)**
 - **download from terminal** you can use the aws command line **[interfece](#Command-line-interface)**
 
+For setting up your aws infrastructure go to **[run](/guides/aws/s3-tasks/runnings3.md)** 
+
+
 <!-- tocstop -->
 
 ## Downloading with Cyberduck
@@ -38,4 +41,4 @@ Generally speaking, aws has really good documentation on how to use their interf
 aws s3 cp s3://task-data-raw/NAME-OF-THE-FOLDER/ . --recursive
 ```
 
-This code will copy all the files to your local library. 
+This code will copy all the files to your local library.
