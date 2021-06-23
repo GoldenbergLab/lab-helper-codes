@@ -1,9 +1,9 @@
 # Guide to Downloading Data from AWS
 
 <!-- toc -->
-- You can only download **one file at a time on S3 console.** This is done by manually clicking the download function on the aws file
-- **no terminal option** You can download multiple files with **[Cyberduck](#downloading-with-cyberduck)**
-- **download from terminal** you can use the aws command line **[interfece](#Command-line-interface)**
+- You can only download **one file at a time on S3 console.** This is done by *manually clicking* the download function on the aws file
+- **No terminal option** You can download multiple files with **[Cyberduck](#downloading-with-cyberduck)**
+- **Download from terminal** you can use the aws command line **[interfece](#Command-line-interface)**
 
 For setting up your AWS infrastructure go to **[run](/guides/aws/s3-tasks/runnings3.md)** 
 
