@@ -1,15 +1,11 @@
 # Guide to Downloading Data from AWS
 
-
-There are few options to downloading:
-You can only download one file at a time on S3 console. So you need to install the AWS client and use the command line or install a File Transfer software such as [CyberDuck](https://cyberduck.io/) in order to download more data at once.
-
 <!-- toc -->
 - You can only download **one file at a time on S3 console.** This is done by manually clicking the download function on the aws file
-- **no terminal option** You can download multiple files with **[cyberduck](#downloading-with-cyberduck)**
+- **no terminal option** You can download multiple files with **[Cyberduck](#downloading-with-cyberduck)**
 - **download from terminal** you can use the aws command line **[interfece](#Command-line-interface)**
 
-For setting up your aws infrastructure go to **[run](/guides/aws/s3-tasks/runnings3.md)** 
+For setting up your AWS infrastructure go to **[run](/guides/aws/s3-tasks/runnings3.md)** 
 
 
 <!-- tocstop -->
@@ -32,9 +28,9 @@ For setting up your aws infrastructure go to **[run](/guides/aws/s3-tasks/runnin
 
 ## Command Line Interface
 
-Generally speaking, aws has really good documentation on how to use their interface to connect to s3.
+AWS has good documentation on how to use their interface to connect to s3.
 
-- **Instalation** The first thing you need to do is [install](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-mac.html) the aws command line interface and make sure its connected to the lab s3.
+- **Installation** The first thing you need to do is [install](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-mac.html) the aws command line interface and make sure its connected to the lab s3.
 - **Copy Files** in order to copy files to a local folder, the easiest thing is to go to that local folder in the terminal and use this code:
 
 ```
