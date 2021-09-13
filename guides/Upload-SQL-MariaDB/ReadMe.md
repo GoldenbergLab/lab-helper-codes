@@ -8,13 +8,13 @@ Create Database
 3. create table table_import (Column_1 char(20), Column_2 char(20), Column_3 char(20));
 
 Create Import Directory
-1. mkdir /export/mdb_external/import/jschoene
+1. mkdir /export/mdb_external/import/username
 2. chmod 700 /export/mdb_external/import/username
 
 Move File
 1. pwd #Get the full directory of your desktop where your file is
 returns for example: /export/home/rcsguest/rcs_username/Desktop
-2. mv /export/home/rcsguest/rcs_jschoene/Desktop/SampleData.txt /export/mdb_external/import/username
+2. mv /export/home/rcsguest/rcs_username/Desktop/SampleData.txt /export/mdb_external/import/username
 
 Import File
 1. mysql
