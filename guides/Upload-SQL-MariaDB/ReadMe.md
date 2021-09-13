@@ -18,7 +18,7 @@ returns for example: /export/home/rcsguest/rcs_username/Desktop
 
 Import File
 1. mysql
-2. use agoldenberg_twitter_data;
+2. use agoldenberg_DATABASENAME;
 3. load data local infile '/export/mdb_external/import/username/SampleData.txt' into table table_import fields terminated by '|' lines terminated by '\n' ignore 1 lines;
 
 Check Data
