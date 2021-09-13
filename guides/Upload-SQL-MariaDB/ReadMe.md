@@ -9,22 +9,22 @@ Create Database
 
 Create Import Directory
 1. mkdir /export/mdb_external/import/jschoene
-2. chmod 700 /export/mdb_external/import/jschoene
+2. chmod 700 /export/mdb_external/import/username
 
 Move File
 1. pwd #Get the full directory of your desktop where your file is
-returns for example: /export/home/rcsguest/rcs_jschoene/Desktop
-2. mv /export/home/rcsguest/rcs_jschoene/Desktop/SampleData.txt /export/mdb_external/import/jschoene
+returns for example: /export/home/rcsguest/rcs_username/Desktop
+2. mv /export/home/rcsguest/rcs_jschoene/Desktop/SampleData.txt /export/mdb_external/import/username
 
 Import File
 1. mysql
 2. use agoldenberg_twitter_data;
-3. load data local infile '/export/mdb_external/import/jschoene/SampleData.txt' into table table_import fields terminated by '|' lines terminated by '\n' ignore 1 lines;
+3. load data local infile '/export/mdb_external/import/username/SampleData.txt' into table table_import fields terminated by '|' lines terminated by '\n' ignore 1 lines;
 
 Check Data
 1.Describe table_import;
 2. SELECT * FROM table_import;
 
 Remove temp-import files & folder
-1. rm -rf /export/mdb_external/import/jschoene
+1. rm -rf /export/mdb_external/import/username
 
