@@ -38,7 +38,7 @@ def command_builder(df,db_table_name):
             col_command = col_name + " " + SQL_datatype + " "
         elif pandas_datatype == "float64":
             df[col] = df[col].round(5)
-            SQL_datatype == "decimal(18,5),"
+            SQL_datatype = "decimal(18,5),"
             col_command = col_name + " " + SQL_datatype + " "
         elif pandas_datatype == "string":
             SQL_datatype = "text,"
