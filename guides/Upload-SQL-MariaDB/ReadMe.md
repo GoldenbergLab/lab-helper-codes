@@ -1,5 +1,6 @@
 Useful rescources with more detail: 
 https://grid.rcs.hbs.org/importing
+
 https://grid.rcs.hbs.org/import-and-export-text-files
 
 Create Database
