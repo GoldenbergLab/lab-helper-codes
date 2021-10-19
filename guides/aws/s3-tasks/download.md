@@ -28,6 +28,8 @@ For setting up your AWS infrastructure go to **[run](/guides/aws/s3-tasks/runnin
 
 ## Command Line Interface
 
+We have an extensive .R code which downloads data automatically into your system. Find the template repository [here.](https://github.com/GoldenbergLab/r-project-template-no-enviroment-control) 
+
 AWS has good documentation on how to use their interface to connect to s3.
 
 - **Installation** The first thing you need to do is [install](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-mac.html) the aws command line interface and make sure its connected to the lab s3.
