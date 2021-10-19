@@ -1,3 +1,7 @@
+# data files
+*.csv
+guides/Upload-SQL-MariaDB/data/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

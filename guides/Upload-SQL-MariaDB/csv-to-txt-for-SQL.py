@@ -3,10 +3,10 @@ import os
 
 # Defining files and locations
 
-in_filename = "Jan2019_random_userids" + ".csv"
+in_filename = "twitter-hook-data" + ".csv"
 file_location = "data"
-out_filename = "Jan2019_random_userids" + ".txt"
-db_table_name = "Verified_Unverified_Users"
+out_filename = "twitter-hook-data-oct-21-sample" + ".txt"
+db_table_name = "twitter-hook-data-oct-21"
 
 # Functions
 
