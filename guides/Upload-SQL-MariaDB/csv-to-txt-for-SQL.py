@@ -1,53 +1,314 @@
 import pandas as pd
 import os
+import numpy as np
 
 # Defining files and locations
 
-in_filename = "twitter-hook-data" + ".csv"
+in_filename = "users_table_twitter" + ".csv"
 file_location = "data"
-out_filename = "twitter-hook-data-oct-21-sample" + ".txt"
-db_table_name = "twitter-hook-data-oct-21"
+out_filename = "users_table_twitter" + ".txt"
+db_table_name = "agoldenberg_twitter_hook"
 
 # Functions
 
 def csv_reader(in_filename, file_location):
     current_path = os.getcwd()
     relative_file_path = os.path.join(current_path, file_location, in_filename)
+
+    pd.set_option('display.float_format', lambda x: '%.5f' % x)
+    pd.set_option('display.max_colwidth', None)
+    dtypes = {'user_id': 'str', 'tweet_id': 'str', 'in_reply_to_status': 'str', 'retweeted_status_id': 'str',
+              'quoted_status_id': 'str'}
+
     df = pd.read_csv(relative_file_path,  # reading in the original dataset
                      error_bad_lines=False,
-                     index_col=False)
+                     index_col=False,
+                     dtype=dtypes)
     #df.update(df.select_dtypes(include=np.number).applymap('{:,g}'.format)) # remove trailing 0s
     df = df.convert_dtypes()
     return df
 
 def indexer(df):
     df.reset_index(inplace=True, drop=True)
-    filter_col = [col for col in df if not col.startswith('Unnam') and not col.startswith('X')] # remove unwanted columns
+    filter_col = [col for col in df if not col.startswith('Unnam')
+                  and not col.startswith('X')
+                  and not col.startswith('inserted_at')
+                  and not col.startswith('id')] # remove unwanted columns
     df = df[filter_col]
+    if 'created_at' in df.columns:
+        df.loc[:,'created_at'] = pd.to_datetime(df['created_at'])
+
+    df.loc[:,'inserted_at'] = pd.Timestamp.now()
+    df.loc[:,'id'] = df.reset_index().index
     return df
 
 def command_builder(df,db_table_name):
     build_command = "create table " + db_table_name + " ("
     string_col_commands = ""
+    col_command = ""
     for col in df:
-        col_name = col
-        pandas_datatype = str(df[col].infer_objects().dtypes)
-        #print(col,pandas_datatype)
-        if pandas_datatype == "Int64":
+        if col == "id":
+            col_name = col
             SQL_datatype = "int,"
             col_command = col_name + " " + SQL_datatype + " "
-        elif pandas_datatype == "float64":
-            df[col] = df[col].round(5)
-            SQL_datatype = "decimal(18,5),"
+        elif col == "user_id":
+            col_name = col
+            SQL_datatype = "int,"
             col_command = col_name + " " + SQL_datatype + " "
-        elif pandas_datatype == "string":
+        elif col == "username":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "displayname":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "inserted_at":
+            col_name = col
+            SQL_datatype = "DATE,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "link_image":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "summary_bio":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "created_at":
+            col_name = col
+            SQL_datatype = "DATE,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "followers_count":
+            col_name = col
+            SQL_datatype = "int,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "created_at":
+            col_name = col
+            SQL_datatype = "DATE,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "statuses_count":
+            col_name = col
+            SQL_datatype = "int,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "friends_count":
+            col_name = col
+            SQL_datatype = "int,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "favorites_count":
+            col_name = col
+            SQL_datatype = "int,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "listed_count":
+            col_name = col
+            SQL_datatype = "int,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "verified":
+            col_name = col
+            SQL_datatype = "TINYTEXT,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "lang":
+            col_name = col
+            SQL_datatype = "TINYTEXT,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "location":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "tweet_id":
+            col_name = col
+            SQL_datatype = "int,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "source":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "text":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "text_hashtags":
+            SQL_datatype = "text,"
+            col_name = col
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "text_user_mentions":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "possibly_sensitive":
+            col_name = col
+            SQL_datatype = "TINYTEXT,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "retweet_count":
+            col_name = col
+            SQL_datatype = "int,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "in_reply_to_status_id":
+            col_name = col
+            SQL_datatype = "int,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "in_reply_to_user_id":
+            col_name = col
+            SQL_datatype = "int,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "retweeted_status":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "retweeted_status_id":
+            col_name = col
+            SQL_datatype = "int,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "retweeted_status_created_at":
+            col_name = col
+            SQL_datatype = "DATE,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "retweeted_status_text":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "retweeted_status_user_id":
+            col_name = col
+            SQL_datatype = "int,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "retweeted_status_username":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "retweeted_status_lang":
+            col_name = col
+            SQL_datatype = "TINYTEXT,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "retweeted_status_username_links":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "retweeted_status_username_friends_count":
+            col_name = col
+            SQL_datatype = "int,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "retweeted_status_username_followers_count":
+            col_name = col
+            SQL_datatype = "int,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "retweeted_status_username_listed_count":
+            col_name = col
+            SQL_datatype = "int,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "retweeted_status_username_status_count":
+            col_name = col
+            SQL_datatype = "int,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "retweeted_status_username_verified":
+            col_name = col
+            SQL_datatype = "TINYTEXT,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "retweeted_status_username_time_zone":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "retweeted_status_location":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "retweeted_status_location_coordinates":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "retweeted_status_hashtags":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "retweeted_status_user_mentions":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "retweeted_status_url":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "quoted_status":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "quoted_status_id":
+            col_name = col
+            SQL_datatype = "int,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "quoted_status_created_at":
+            col_name = col
+            SQL_datatype = "DATE,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "quoted_status_text":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "quoted_status_user_id":
+            col_name = col
+            SQL_datatype = "int,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "quoted_status_username":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "quoted_status_lang":
+            col_name = col
+            SQL_datatype = "TINYTEXT,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "quoted_status_username_links":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "quoted_status_username_friends_count":
+            col_name = col
+            SQL_datatype = "int,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "quoted_status_username_followers_count":
+            col_name = col
+            SQL_datatype = "int,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "quoted_status_username_listed_count":
+            col_name = col
+            SQL_datatype = "int,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "quoted_status_username_status_count":
+            col_name = col
+            SQL_datatype = "int,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "quoted_status_username_verified":
+            col_name = col
+            SQL_datatype = "TINYTEXT,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "quoted_status_username_time_zone":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "quoted_status_location":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "quoted_status_location_coordinates":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "quoted_status_hashtags":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "quoted_status_user_mentions":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+        elif col == "quoted_status_url":
+            col_name = col
             SQL_datatype = "text,"
             col_command = col_name + " " + SQL_datatype + " "
         else:
-            print(col + " " + str(pandas_datatype) + " Jonas has not added this datatype yet")
+            print("The column name  '" + col + "' is not part of the regular list of variables and needs to be added manually")
         string_col_commands = string_col_commands + col_command
-    sql_command = build_command + string_col_commands + ");"
+        sql_command = build_command + string_col_commands + ");"
     return(sql_command)
+    print(sql_command)
 
 def pipe_remover(df):
     for col in df:
