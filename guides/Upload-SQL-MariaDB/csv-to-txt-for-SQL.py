@@ -4,9 +4,9 @@ import numpy as np
 
 # Defining files and locations
 
-in_filename = "users_table_twitter" + ".csv"
+in_filename = "renamed_columns_tweets_all" + ".csv"
 file_location = "data"
-out_filename = "users_table_twitter" + ".txt"
+out_filename = "renamed_columns_tweets_all" + ".txt"
 db_table_name = "agoldenberg_twitter_hook"
 
 # Functions
@@ -53,15 +53,15 @@ def command_builder(df,db_table_name):
             col_command = col_name + " " + SQL_datatype + " "
         elif col == "user_id":
             col_name = col
-            SQL_datatype = "int,"
+            SQL_datatype = "BIGINT,"
             col_command = col_name + " " + SQL_datatype + " "
         elif col == "username":
             col_name = col
-            SQL_datatype = "text,"
+            SQL_datatype = "TINYBLOB,"
             col_command = col_name + " " + SQL_datatype + " "
         elif col == "displayname":
             col_name = col
-            SQL_datatype = "text,"
+            SQL_datatype = "TINYBLOB,"
             col_command = col_name + " " + SQL_datatype + " "
         elif col == "inserted_at":
             col_name = col
@@ -73,7 +73,7 @@ def command_builder(df,db_table_name):
             col_command = col_name + " " + SQL_datatype + " "
         elif col == "summary_bio":
             col_name = col
-            SQL_datatype = "text,"
+            SQL_datatype = "MEDIUMBLOB,"
             col_command = col_name + " " + SQL_datatype + " "
         elif col == "created_at":
             col_name = col
@@ -117,7 +117,7 @@ def command_builder(df,db_table_name):
             col_command = col_name + " " + SQL_datatype + " "
         elif col == "tweet_id":
             col_name = col
-            SQL_datatype = "int,"
+            SQL_datatype = "BIGINT,"
             col_command = col_name + " " + SQL_datatype + " "
         elif col == "source":
             col_name = col
@@ -125,7 +125,7 @@ def command_builder(df,db_table_name):
             col_command = col_name + " " + SQL_datatype + " "
         elif col == "text":
             col_name = col
-            SQL_datatype = "text,"
+            SQL_datatype = "MEDIUMBLOB,"
             col_command = col_name + " " + SQL_datatype + " "
         elif col == "text_hashtags":
             SQL_datatype = "text,"
@@ -145,11 +145,11 @@ def command_builder(df,db_table_name):
             col_command = col_name + " " + SQL_datatype + " "
         elif col == "in_reply_to_status_id":
             col_name = col
-            SQL_datatype = "int,"
+            SQL_datatype = "BIGINT,"
             col_command = col_name + " " + SQL_datatype + " "
         elif col == "in_reply_to_user_id":
             col_name = col
-            SQL_datatype = "int,"
+            SQL_datatype = "BIGINT,"
             col_command = col_name + " " + SQL_datatype + " "
         elif col == "retweeted_status":
             col_name = col
@@ -157,7 +157,7 @@ def command_builder(df,db_table_name):
             col_command = col_name + " " + SQL_datatype + " "
         elif col == "retweeted_status_id":
             col_name = col
-            SQL_datatype = "int,"
+            SQL_datatype = "BIGINT,"
             col_command = col_name + " " + SQL_datatype + " "
         elif col == "retweeted_status_created_at":
             col_name = col
@@ -165,11 +165,11 @@ def command_builder(df,db_table_name):
             col_command = col_name + " " + SQL_datatype + " "
         elif col == "retweeted_status_text":
             col_name = col
-            SQL_datatype = "text,"
+            SQL_datatype = "MEDIUMBLOB,"
             col_command = col_name + " " + SQL_datatype + " "
         elif col == "retweeted_status_user_id":
             col_name = col
-            SQL_datatype = "int,"
+            SQL_datatype = "BIGINT,"
             col_command = col_name + " " + SQL_datatype + " "
         elif col == "retweeted_status_username":
             col_name = col
@@ -233,7 +233,7 @@ def command_builder(df,db_table_name):
             col_command = col_name + " " + SQL_datatype + " "
         elif col == "quoted_status_id":
             col_name = col
-            SQL_datatype = "int,"
+            SQL_datatype = "BIGINT,"
             col_command = col_name + " " + SQL_datatype + " "
         elif col == "quoted_status_created_at":
             col_name = col
@@ -241,11 +241,11 @@ def command_builder(df,db_table_name):
             col_command = col_name + " " + SQL_datatype + " "
         elif col == "quoted_status_text":
             col_name = col
-            SQL_datatype = "text,"
+            SQL_datatype = "MEDIUMBLOB,"
             col_command = col_name + " " + SQL_datatype + " "
         elif col == "quoted_status_user_id":
             col_name = col
-            SQL_datatype = "int,"
+            SQL_datatype = "BIGINT,"
             col_command = col_name + " " + SQL_datatype + " "
         elif col == "quoted_status_username":
             col_name = col
@@ -314,16 +314,22 @@ def pipe_remover(df):
     for col in df:
         col_name = col
         pandas_datatype = str(df[col].infer_objects().dtypes)
+        print(col)
+        print(pandas_datatype)
         if pandas_datatype == "string":
+            print("TRUE")
             df[col_name] = df[col_name].str.replace("|", "")
+            df[col_name] = df[col_name].str.replace('"', "")
+            df[col_name] = df[col_name].str.replace("\n", "")
+            df[col_name] = df[col_name].str.replace("\r", "")
     return df
 
 
 def csv_to_SQL_formatter(in_filename, file_location, out_filename, db_table_name):
     df = csv_reader(in_filename, file_location) # read file
     df = indexer(df)
-    sql_command = command_builder(df,db_table_name)
     df = pipe_remover(df)
+    sql_command = command_builder(df,db_table_name)
     current_path = os.getcwd()
     relative_file_path = os.path.join(current_path, file_location, out_filename)
     df.to_csv(relative_file_path, header=True, index=False, sep='|', mode='a')
