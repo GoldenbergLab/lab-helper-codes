@@ -15,6 +15,7 @@ https://grid.rcs.hbs.org/import-and-export-text-files
 1. `mysql`
 2. `use agoldenberg_twitter_data;`
 3. `create table TABLENAME (Column_1 char(20), Column_2 char(20), Column_3 char(20));` - this command should have also appeared in the file formatter above
+4. `quit;` - exit the database interface to import the data
 
 Create Import Directory
 1. mkdir /export/mdb_external/import/username
