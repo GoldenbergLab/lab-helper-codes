@@ -14,7 +14,7 @@ https://grid.rcs.hbs.org/import-and-export-text-files
 **B. Create Database** - enter the GRID (or SecureCRT) and use the following commands on the command line interface.
 1. `mysql`
 2. `use agoldenberg_twitter_data;`
-3. `create table table_import (Column_1 char(20), Column_2 char(20), Column_3 char(20));` - this command should have also appeared in the file formatter above
+3. `create table TABLENAME (Column_1 char(20), Column_2 char(20), Column_3 char(20));` - this command should have also appeared in the file formatter above
 
 Create Import Directory
 1. mkdir /export/mdb_external/import/username
