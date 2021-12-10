@@ -24,13 +24,7 @@ def csv_reader(in_filename, file_location):
                      index_col=False,
                      dtype=dtypes)
 
-    # dtypes = {'tweet_id': 'str'}
-    #
-    # df = pd.read_csv(relative_file_path,  # reading in the original dataset
-    #                  error_bad_lines=False,
-    #                  index_col=False,
-    #                  dtype=dtypes)
-    #df.update(df.select_dtypes(include=np.number).applymap('{:,g}'.format)) # remove trailing 0s
+
     df = df.convert_dtypes()
     return df
 
@@ -41,7 +35,6 @@ def indexer(df):
                   and not col.startswith('inserted_at')
                   and not col.startswith('id')] # remove unwanted columns
     df = df[filter_col]
-    print("indexer "+ df.columns)
     if 'created_at' in df.columns:
         df.loc[:,'created_at'] = pd.to_datetime(df['created_at'])
 
@@ -371,7 +364,7 @@ def pipe_remover(df):
             df[col_name] = df[col_name].str.replace('"', "")
             df[col_name] = df[col_name].str.replace("\n", "")
             df[col_name] = df[col_name].str.replace("\r", "")
-        print(df.columns+ " pipe_remover")
+
     return df
 
 
@@ -379,7 +372,7 @@ def csv_to_SQL_formatter(in_filename, file_location, out_filename, db_table_name
     df = csv_reader(in_filename, file_location) # read file
     df = indexer(df)
     df = pipe_remover(df)
-    print(df.columns)
+
     sql_command = command_builder(df,db_table_name)
     current_path = os.getcwd()
     relative_file_path = os.path.join(current_path, file_location, out_filename)
