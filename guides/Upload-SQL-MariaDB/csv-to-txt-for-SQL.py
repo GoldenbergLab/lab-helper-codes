@@ -4,9 +4,9 @@ import numpy as np
 
 # Defining files and locations
 
-in_filename = "renamed_columns_tweets_all" + ".csv"
+in_filename = "all_api_sentiment_tweets" + ".csv"
 file_location = "data"
-out_filename = "renamed_columns_tweets_all" + ".txt"
+out_filename = "all_api_sentiment_tweets" + ".txt"
 db_table_name = "agoldenberg_twitter_hook"
 
 # Functions
@@ -17,13 +17,19 @@ def csv_reader(in_filename, file_location):
 
     pd.set_option('display.float_format', lambda x: '%.5f' % x)
     pd.set_option('display.max_colwidth', None)
-    dtypes = {'user_id': 'str', 'tweet_id': 'str', 'in_reply_to_status': 'str', 'retweeted_status_id': 'str',
-              'quoted_status_id': 'str'}
+    dtypes = {'user_id': 'str', 'tweet_id': 'str', 'in_reply_to_status': 'str', 'retweeted_status_id': 'str','quoted_status_id': 'str'}
 
     df = pd.read_csv(relative_file_path,  # reading in the original dataset
                      error_bad_lines=False,
                      index_col=False,
                      dtype=dtypes)
+
+    # dtypes = {'tweet_id': 'str'}
+    #
+    # df = pd.read_csv(relative_file_path,  # reading in the original dataset
+    #                  error_bad_lines=False,
+    #                  index_col=False,
+    #                  dtype=dtypes)
     #df.update(df.select_dtypes(include=np.number).applymap('{:,g}'.format)) # remove trailing 0s
     df = df.convert_dtypes()
     return df
@@ -35,6 +41,7 @@ def indexer(df):
                   and not col.startswith('inserted_at')
                   and not col.startswith('id')] # remove unwanted columns
     df = df[filter_col]
+    print("indexer "+ df.columns)
     if 'created_at' in df.columns:
         df.loc[:,'created_at'] = pd.to_datetime(df['created_at'])
 
@@ -303,12 +310,54 @@ def command_builder(df,db_table_name):
             col_name = col
             SQL_datatype = "text,"
             col_command = col_name + " " + SQL_datatype + " "
+
+        ## for sentiment analysis columns
+        elif col == "tweet_length":
+            col_name = col
+            SQL_datatype = "int,"
+            col_command = col_name + " " + SQL_datatype + " "
+
+        elif col == "vader_tweet_pos":
+            col_name = col
+            SQL_datatype = "DOUBLE,"
+            col_command = col_name + " " + SQL_datatype + " "
+
+        elif col == "vader_tweet_neg":
+            col_name = col
+            SQL_datatype = "DOUBLE,"
+            col_command = col_name + " " + SQL_datatype + " "
+
+        elif col == "vader_tweet_compound":
+            col_name = col
+            SQL_datatype = "DOUBLE,"
+            col_command = col_name + " " + SQL_datatype + " "
+
+        elif col == "vader_tweet_neu":
+            col_name = col
+            SQL_datatype = "DOUBLE,"
+            col_command = col_name + " " + SQL_datatype + " "
+
+        elif col == "vader_tweet_category":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+
+        elif col == "vader_tweet_sent_dict":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+
+        elif col == "vader_tweet_sent_dict":
+            col_name = col
+            SQL_datatype = "text,"
+            col_command = col_name + " " + SQL_datatype + " "
+
         else:
             print("The column name  '" + col + "' is not part of the regular list of variables and needs to be added manually")
         string_col_commands = string_col_commands + col_command
         sql_command = build_command + string_col_commands + ");"
     return(sql_command)
-    print(sql_command)
+
 
 def pipe_remover(df):
     for col in df:
@@ -316,12 +365,13 @@ def pipe_remover(df):
         pandas_datatype = str(df[col].infer_objects().dtypes)
         print(col)
         print(pandas_datatype)
-        if pandas_datatype == "string":
+        if pandas_datatype == "string" and col !="tweet_id":
             print("TRUE")
             df[col_name] = df[col_name].str.replace("|", "")
             df[col_name] = df[col_name].str.replace('"', "")
             df[col_name] = df[col_name].str.replace("\n", "")
             df[col_name] = df[col_name].str.replace("\r", "")
+        print(df.columns+ " pipe_remover")
     return df
 
 
@@ -329,10 +379,13 @@ def csv_to_SQL_formatter(in_filename, file_location, out_filename, db_table_name
     df = csv_reader(in_filename, file_location) # read file
     df = indexer(df)
     df = pipe_remover(df)
+    print(df.columns)
     sql_command = command_builder(df,db_table_name)
     current_path = os.getcwd()
     relative_file_path = os.path.join(current_path, file_location, out_filename)
     df.to_csv(relative_file_path, header=True, index=False, sep='|', mode='a')
+    print(df.columns)
+    print(sql_command)
     return(sql_command)
 
 # Calling function
