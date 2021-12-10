@@ -4,17 +4,17 @@ https://grid.rcs.hbs.org/importing
 
 https://grid.rcs.hbs.org/import-and-export-text-files
 
-Format File
+**A. Format File** - prepare the file for upload into SQL database by changing its format into a pipe-separated (`|`) `.txt` file
 1. Open csv-to-txt-for-SQL.py
 2. Change in_filename, out_filename, db_table_name, file_location in lines 6 - 9 to your specific files and directories
 3. Run the code. The code will output A. formatted txt-file and B. a command which can be used to create the sql-table
 4. Copy the command so you enter it in for step 3. of the Create Database process below
 5. Move the txt file onto the GRID's desktop for the Move File process below
 
-Create Database
-1. mysql
-2. use agoldenberg_twitter_data;
-3. create table table_import (Column_1 char(20), Column_2 char(20), Column_3 char(20));
+**B. Create Database** - enter the GRID (or SecureCRT) and use the following commands on the command line interface.
+1. `mysql`
+2. `use agoldenberg_twitter_data;`
+3. `create table table_import (Column_1 char(20), Column_2 char(20), Column_3 char(20));` - this command should have also appeared in the file formatter above
 
 Create Import Directory
 1. mkdir /export/mdb_external/import/username
