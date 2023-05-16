@@ -2,6 +2,8 @@
 
 This repository is a collection of knowledge that is used for projects in the lab. It includes guides on how to do things, from using infrastructure such as AWS to language-specific solutions such as image manipulation. We welcome lab members and visitors to improve these folders and to add their own. 
 
+## Lab Policies
+-[Open Science](.policies/open_science): instructions on how to handle open science policies. 
 
 ## Lab Guides
 
