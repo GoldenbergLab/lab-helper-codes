@@ -244,10 +244,12 @@ Now, you must create a CloudFront distribution for the S3 bucket. This will allo
    you will include text describing your task, such as `example-task-name-and-phase.hbssurvey.com`.
     - This is the web address that participants will see when they access the task.
     - If you bucket name is `amplification-sad-amit-march-21-pilot`, a good web address name is `amplification-s-pilot.hbssurvey.com`
-    - Be mindful of the names you select and try not to "spoil" participation. For example, a task called `amplification-race-pilot` was changed to `amplification-r-pilot.hbssurvey.com` because we did not want to spoil participants on the fact that this task contained elements related to race. 
-9. For **SSL Certificate**, select **Custom SSL Certificate (example.com)**. Then select
+    - Be mindful of the names you select and try not to "spoil" participation. For example, a task called `amplification-race-pilot` was changed to `amplification-r-pilot.hbssurvey.com` because we did not want to spoil participants on the fact that this task contained elements related to race.
+9. (2024 UPDATE) For **Web Application Firewall (WAF)**, select **Do not enable security protections**. Otherwise, you will not have access to submit the distribution. 
+10. For **SSL Certificate**, select **Custom SSL Certificate (example.com)**. Then select
    from the dropdown `*.hbssurvey.com (a715bbbd-ad62-49a0-8c75-9fdb9d542633)`
-10. Submit by choosing **Create Distribution** again.
+       - UPDATE: You are likely to receive a warning saying the SSL Certificate is not valid. Just ignore it and go ahead because there is no evidence so far that this will cause any issues in the experiment.
+11. Submit by choosing **Create Distribution** again.
 
 Once these steps are completing, AWS will begin deploying the task. Typically, the wait should be less than ten minutes (in extreme cases it can take a few hours). 
 Once ready, you'll be able to navigate to your deployed task website.
