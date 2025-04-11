@@ -51,7 +51,7 @@ You can also use piped text to include embedded data in your message history, li
 
 Now that you've done all that, you just need to insert a *Web Service* block into your Qualtrics survey flow, and fill in the above pieces.
 
-[Example Qualtrics 1](img/q_gpt_1.png)
+![Example Qualtrics 1](img/q_gpt_1.png)
 
 -  **URL:** Insert the URL for the API you're using. For the GPT Chat Completions API, this is `https://api.openai.com/v1/chat/completions`.
 - **Method:** Select POST. (For an explanation of what this means, look up HTTP request types.)
@@ -69,7 +69,7 @@ And that's your input! Before we get to the last part of the Web Service block:
 
 The last thing you'll specify in the Web Service block is what to do with the output you receive from the API. The output will be formatted as JSON, [as described here in the documentation.](https://platform.openai.com/docs/api-reference/chat/object) 
 
-[Example Qualtrics 2](img/q_gpt_2.png)
+![Example Qualtrics 2](img/q_gpt_2.png)
 
 The Qualtrics Web Service block allows you to really easily extract this JSON and save it into embedded data in your survey. In the "Set Embedded Data" section, specify the embedded data variable name on the left, and on the right, indicate the part of the JSON you would like to save.
 
