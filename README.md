@@ -11,6 +11,7 @@ This repository is a collection of knowledge that is used for projects in the la
 - [Amazon Web Services](./guides/aws): Guide to install, configure, and use AWS.
 - [Prolific](./guides/prolific): Guide to avoid headaches with approving Prolific submissions.
 - [Upload to MariaDB](./guides/Upload-SQL-MariaDB): Guide to help formating files into SQL compatible format and uploading it to HBS MariaDB on the GRID.
+- [GPT on Qualtrics](./guides/qualtrics/gpt_qualtrics.md): Guide to integrating GPT (and other OpenAI APIs) into Qualtrics surveys.
 
 ## Specific Coding Solutions
 
